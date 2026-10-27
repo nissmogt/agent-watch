@@ -2,6 +2,8 @@
 
 `runs/<date>.json` holds one daily run. `feed.json` and `manifest.json` are generated from the runs by `scripts/aw_update.py`; never edit them by hand.
 
+`status.json` is optional. While its `state` is anything but `"idle"`, the page shows a progress bar at the top listing its `steps` (each `done`, `running` or `waiting`). Daily runs leave it alone.
+
 ## A run
 
 ```jsonc

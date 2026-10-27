@@ -54,6 +54,24 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .note::before { content: "# "; color: var(--fg-3); }
 .warn { color: var(--sev-high); }
 
+/* collection in progress: a bar pinned to the top until data/agentwatch/status.json says the work is done */
+.prog { position: sticky; top: 0; z-index: 50; background: var(--bg); border: 1px solid var(--accent); padding: 8px 12px 9px; display: grid; gap: 6px; font-size: 12.5px; box-shadow: 0 6px 18px rgba(0,0,0,.6); }
+.prog .ph { display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; align-items: baseline; }
+.prog .pt { color: var(--bright); font-weight: 600; }
+.prog .pt::before { content: "[busy] "; color: var(--accent); font-weight: 400; }
+.prog .pn { color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.prog .bar { position: relative; height: 10px; border: 1px solid var(--line-2); overflow: hidden; background: radial-gradient(circle, rgba(63,216,232,.22) 1px, transparent 1.3px) 0 0 / 4px 4px; }
+.prog .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: var(--p); background: var(--accent); box-shadow: var(--glow); transition: width .6s ease; }
+.prog .bar b { position: absolute; top: 0; bottom: 0; width: 18%; left: var(--p); background: linear-gradient(90deg, rgba(63,216,232,.55), transparent); animation: scan 1.6s linear infinite; }
+@keyframes scan { from { transform: translateX(0); opacity: 1; } to { transform: translateX(300%); opacity: 0; } }
+.prog ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px 14px; color: var(--fg-2); }
+.prog li::before { content: "[ ] "; color: var(--fg-3); }
+.prog li.done { color: var(--fg); }
+.prog li.done::before { content: "[x] "; color: var(--accent); }
+.prog li.run::before { content: "[~] "; color: var(--sev-medium); }
+.prog .pd { color: var(--fg-3); margin: 0; }
+@media (prefers-reduced-motion: reduce) { .prog .bar b { animation: none; } }
+
 .box { position: relative; border: 1px solid var(--line); padding: 16px 14px 12px; margin-top: 8px; min-width: 0; }
 .box > .legend { position: absolute; top: -0.75em; left: 10px; background: var(--bg); padding: 0 6px; color: var(--bright); font-size: 12.5px; white-space: nowrap; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; }
 .box > .legend::before { content: "$ "; color: var(--fg-2); }
@@ -206,6 +224,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 </head>
 <body>
 <div class="wrap">
+  <div class="prog" id="prog" role="status" aria-live="polite" hidden></div>
   <header class="top">
     <div class="box"><span class="legend">./agent-watch --version</span>
 <pre class="banner" aria-label="AGENT WATCH">   _   ___ ___ _  _ _____      __      ___ _____ ___ _  _
@@ -351,7 +370,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
     let last = null;
     for (const base of tries) {
       try {
-        const r = await fetch(base + name, {cache: 'no-cache'});
+        const r = await fetch(base + name + '?t=' + Math.floor(Date.now() / 60000), {cache: 'no-cache'});
         if (r.ok) return await r.json();
         last = new Error(name + ': HTTP ' + r.status);
       } catch (e) { last = e; }
@@ -629,10 +648,43 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   let rt = 0;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (M) drawTrend(); }, 150); });
 
-  Promise.all([getJSON('manifest.json'), getJSON('feed.json')]).then(([m, f]) => {
-    M = m; ITEMS = f.items || []; LATEST = m.updated; LAST_ADDED = m.runs[0].date;
-    drawRuns(); draw();
-  }).catch(fail);
+  // ------------------------------------------------------------ work in progress
+  let STATUS_STATE = null;
+  function drawStatus(st) {
+    const box = $('prog');
+    const busy = st && st.state && st.state !== 'idle' && Array.isArray(st.steps);
+    box.hidden = !busy;
+    if (!busy) return;
+    const done = st.steps.filter((x) => x.state === 'done').length;
+    const pct = Math.round(100 * done / Math.max(1, st.steps.length));
+    box.innerHTML = '<div class="ph"><span class="pt">' + esc(st.title) + '</span><span class="pn">' + done + ' of ' + st.steps.length + ' steps · ' + pct + '%' +
+      (st.updated ? ' · updated ' + esc(new Date(st.updated).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'})) : '') + '</span></div>' +
+      '<div class="bar" style="--p:' + pct + '%"><i></i><b></b></div>' +
+      '<ul>' + st.steps.map((x) => '<li class="' + (x.state === 'done' ? 'done' : x.state === 'running' ? 'run' : '') + '">' + esc(x.label) + (x.note ? ' <span class="muted">' + esc(x.note) + '</span>' : '') + '</li>').join('') + '</ul>' +
+      (st.detail ? '<p class="pd">' + esc(st.detail) + '</p>' : '');
+  }
+  function loadAll() {
+    return Promise.all([getJSON('manifest.json'), getJSON('feed.json')]).then(([m, f]) => {
+      M = m; ITEMS = f.items || []; LATEST = m.updated; LAST_ADDED = m.runs[0].date;
+      if (!loadAll.once) {
+        loadAll.once = true;
+        // open on the shortest window that has something in it
+        for (const w of [7, 30, 90, 0]) { S.win = w; if (ITEMS.some(inWindow)) break; }
+      }
+      drawRuns(); draw();
+    });
+  }
+  function pollStatus() {
+    getJSON('status.json').then((st) => {
+      const was = STATUS_STATE;
+      STATUS_STATE = st && st.state;
+      drawStatus(st);
+      if (was && was !== 'idle' && STATUS_STATE === 'idle') loadAll().catch(fail);
+      if (STATUS_STATE && STATUS_STATE !== 'idle') setTimeout(pollStatus, 60000);
+    }).catch(() => drawStatus(null));
+  }
+  loadAll().catch(fail);
+  pollStatus();
 })();
 </script>
 </body>
