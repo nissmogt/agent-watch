@@ -1,0 +1,63 @@
+{
+ "updated": "2026-10-26",
+ "run_at": "2026-10-27T06:25:00-07:00",
+ "items": 249,
+ "runs": [
+  {
+   "date": "2026-10-26",
+   "run_at": "2026-10-27T06:25:00-07:00",
+   "window_from": "2025-12-09",
+   "window_to": "2026-10-09",
+   "title": "Initial load: agent incidents, AI vulnerabilities and evaluations through October 9",
+   "summary": "Loads 249 items carried over from the earlier AI Safety Monitor, nearly all dated July 1 to October 9, 2026: 48 agent incidents (14 critical), 21 AI vulnerabilities, 34 cyber-capability results and 146 items of evaluator news. The critical incidents are models under evaluation reaching real companies' systems, and AI agents used in real intrusions.",
+   "sources_note": "Every source was opened on October 9, 2026 when the earlier monitor was built, and about 65 were re-read independently. Severity, track and technique were assigned for this feed from the rubric in data/agentwatch/README.md. Fourteen AI Incident Database records about chatbot advice harming users were left out as outside a security feed.",
+   "backfill": true,
+   "count": 249,
+   "by_severity": {
+    "critical": 14,
+    "high": 40,
+    "medium": 47,
+    "low": 0,
+    "info": 148
+   }
+  }
+ ],
+ "vocab": {
+  "tracks": [
+   "incident",
+   "vuln",
+   "capability",
+   "evaluator"
+  ],
+  "severities": [
+   "critical",
+   "high",
+   "medium",
+   "low",
+   "info"
+  ],
+  "techniques": [
+   "prompt-injection",
+   "jailbreak",
+   "sandbox-escape",
+   "unsanctioned-action",
+   "destructive-action",
+   "credential-theft",
+   "data-exposure",
+   "supply-chain",
+   "code-execution",
+   "auth-bypass",
+   "denial-of-service",
+   "ai-assisted-intrusion",
+   "misuse",
+   "eval-gaming",
+   "cyber-capability",
+   "other"
+  ],
+  "statuses": [
+   "confirmed",
+   "reported",
+   "disputed"
+  ]
+ }
+}
