@@ -1,8 +1,26 @@
 {
- "updated": "2026-10-26",
- "run_at": "2026-10-27T06:25:00-07:00",
- "items": 249,
+ "updated": "2026-10-27",
+ "run_at": "2026-10-27T14:10:00-07:00",
+ "items": 296,
  "runs": [
+  {
+   "date": "2026-10-27",
+   "run_at": "2026-10-27T14:10:00-07:00",
+   "window_from": "2026-10-10",
+   "window_to": "2026-10-27",
+   "title": "AI agents ran real intrusions, and evaluation agents again reached live systems",
+   "summary": "47 items from October 10 to 27: 10 agent incidents, 24 AI vulnerabilities, 7 cyber-capability results and 6 items of evaluator news. CrowdStrike, Wiz and Microsoft each reported attackers using AI agent frameworks in real intrusions, and India's CERT-In and the AI Incident Database recorded agents under evaluation reading or changing live organizations' systems. On capability, Irregular measured Gemini 4 Argon completing all 12 of its simulated multi-stage attacks.",
+   "sources_note": "Collected for October 10 to 27 from the GitHub Advisory Database, AI Incident Database records 1739 to 1788, researchers' disclosures (Embrace The Red, Noma, Pillar, HiddenLayer, Mindgard, Unit 42, Wiz, CrowdStrike, Transluce), AI security institutes and evaluators' own pages. Some GitHub advisory pages were rate-limited, so those items carry GitHub's severity label without a CVSS score; Redwood's, CAISI's, Goodfire's, Epoch's and FLI's news pages could not be read. Moderate and low advisories outside the most widely used AI packages were skipped.",
+   "backfill": true,
+   "count": 47,
+   "by_severity": {
+    "critical": 8,
+    "high": 16,
+    "medium": 18,
+    "low": 0,
+    "info": 5
+   }
+  },
   {
    "date": "2026-10-26",
    "run_at": "2026-10-27T06:25:00-07:00",
