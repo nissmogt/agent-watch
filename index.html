@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="A daily threat feed on AI agents and models: real-world agent incidents, vulnerabilities in AI products, measured offensive cyber capability, and news from the organizations that evaluate AI safety.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="agent-watch">
+<meta property="og:description" content="Daily AI security threat feed: agent incidents, AI vulnerabilities, cyber capability, evaluator news.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mehrabiani.com/projects/agent-watch/">
+<title>agent-watch — Kareem Mehrabiani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a security-operations terminal read top to bottom — banner and status, readouts for the chosen window,
+   severity by track, weekly trend, the feed with its filters, who and how, the run log, the archive and the readme.
+   Single deliberate dark theme. Severity always shows as a labeled badge; color is never the only cue. */
+:root {
+  color-scheme: dark;
+  --bg: #06090b;
+  --surface: #0a1013;
+  --line: #1f3138;
+  --line-2: #2c454e;
+  --fg: #cfe3e0;
+  --fg-2: #8fb0ac;
+  --fg-3: #5f7d79;
+  --bright: #effffb;
+  --accent: #3fd8e8;
+  --sev-critical: #f2477f;
+  --sev-high: #f0901f;
+  --sev-medium: #e6dc79;
+  --sev-low: #5aa8ff;
+  --sev-info: #7f8c88;
+  --glow: 0 0 6px rgba(63, 216, 232, .40);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+  --font-display: "VT323", "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--bg); }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-mono); font-size: 14px; line-height: 1.5; margin: 0; padding: 0 16px 56px; -webkit-text-size-adjust: 100%; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60; background: repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px); }
+a { color: var(--bright); text-decoration: underline dotted 1px; text-underline-offset: 3px; }
+a:hover { background: var(--accent); color: #000; text-decoration: none; }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible { outline: 1px dashed var(--accent); outline-offset: 2px; }
+::selection { background: var(--accent); color: #000; }
+.wrap { max-width: 980px; margin: 0 auto; display: grid; gap: 24px; }
+.muted { color: var(--fg-3); }
+.num { font-variant-numeric: tabular-nums; }
+.note { font-size: 12.5px; color: var(--fg-2); margin: 0; max-width: 80ch; }
+.note::before { content: "# "; color: var(--fg-3); }
+.warn { color: var(--sev-high); }
+
+.box { position: relative; border: 1px solid var(--line); padding: 16px 14px 12px; margin-top: 8px; min-width: 0; }
+.box > .legend { position: absolute; top: -0.75em; left: 10px; background: var(--bg); padding: 0 6px; color: var(--bright); font-size: 12.5px; white-space: nowrap; max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; }
+.box > .legend::before { content: "$ "; color: var(--fg-2); }
+
+/* banner */
+.top { padding-top: 22px; display: grid; gap: 10px; }
+.banner { margin: 0; font-size: clamp(8px, 2.3vw, 12.5px); line-height: 1.15; color: var(--accent); text-shadow: var(--glow); overflow-x: auto; white-space: pre; }
+.sysline { display: grid; gap: 2px; font-size: 13px; color: var(--fg-2); }
+.sysline b { color: var(--fg); font-weight: 500; }
+.prompt { font-size: 14px; color: var(--bright); }
+.prompt::before { content: "$ "; color: var(--fg-2); }
+.cursor::after { content: "█"; margin-left: 2px; color: var(--accent); animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.jump { display: flex; gap: 8px 14px; flex-wrap: wrap; font-size: 13px; }
+.jump a { text-decoration: none; color: var(--fg); }
+.jump a::before { content: "["; color: var(--fg-3); }
+.jump a::after { content: "]"; color: var(--fg-3); }
+.jump a:hover { background: none; color: var(--bright); text-shadow: var(--glow); }
+
+/* window control */
+.seg { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12px; }
+.seg .cl { color: var(--fg-3); margin-right: 4px; }
+.seg button { background: transparent; color: var(--fg-2); border: 1px solid var(--line-2); padding: 3px 10px; font: inherit; cursor: pointer; border-radius: 2px; }
+.seg button[aria-pressed="true"] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.seg button:not([aria-pressed="true"]):hover { color: var(--bright); border-color: var(--fg-2); }
+
+/* severity badges: label first, color second */
+.sev { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 5.4ch; padding: 0 5px; font-size: 11px; font-weight: 600; letter-spacing: .04em; line-height: 1.6; color: #0b0d0e; background: var(--c); border-radius: 2px; text-transform: uppercase; white-space: nowrap; }
+.sev.s-info { color: var(--bg); }
+.s-critical { --c: var(--sev-critical); }
+.s-high { --c: var(--sev-high); }
+.s-medium { --c: var(--sev-medium); }
+.s-low { --c: var(--sev-low); }
+.s-info { --c: var(--sev-info); }
+.sev::before { content: var(--ic); }
+.sev.s-critical { --ic: "▲▲"; } .sev.s-high { --ic: "▲"; } .sev.s-medium { --ic: "◆"; } .sev.s-low { --ic: "▽"; } .sev.s-info { --ic: "·"; }
+
+/* readouts */
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 720px) { .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.tile { border: 1px solid var(--line); padding: 10px 12px; display: grid; min-width: 0; }
+.tile .k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+.tile .k::before { content: "▸ "; }
+.tile .v { font-family: var(--font-display); font-size: 40px; line-height: 1; color: var(--bright); text-shadow: var(--glow); margin-top: 4px; }
+.tile .s { font-size: 12px; color: var(--fg-2); margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+
+/* severity × track */
+.mx { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.mx th { font-weight: 500; color: var(--fg-3); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; text-align: right; padding: 4px 8px; border-bottom: 1px solid var(--line); }
+.mx th:first-child { text-align: left; }
+.mx td { padding: 0; border-bottom: 1px dashed var(--line); text-align: right; }
+.mx td:first-child { text-align: left; padding: 6px 8px; color: var(--fg); }
+.mx td:first-child small { display: block; color: var(--fg-3); font-size: 11.5px; }
+.mx button { width: 100%; background: none; border: 0; color: var(--fg); font: inherit; padding: 8px; text-align: right; cursor: pointer; position: relative; }
+.mx button .bar { position: absolute; left: 6px; right: 6px; bottom: 3px; height: 3px; }
+.mx button .bar i { display: block; height: 100%; background: var(--c); width: var(--w); margin-left: auto; }
+.mx button:hover, .mx button[aria-pressed="true"] { background: rgba(63, 216, 232, .10); color: var(--bright); }
+.mx button[aria-pressed="true"] { outline: 1px solid var(--accent); outline-offset: -1px; }
+.mx button.zero { color: var(--fg-3); }
+.mx tr.tot td { border-bottom: 0; color: var(--fg-2); padding-top: 2px; }
+.mx .tot td button { color: var(--fg-2); }
+.mxwrap { overflow-x: auto; }
+
+/* trend */
+.trend svg { width: 100%; height: auto; display: block; overflow: visible; }
+.trend .ax text { fill: var(--fg-3); font-family: var(--font-mono); font-size: 11px; }
+.trend .grid line { stroke: var(--line); stroke-width: 1; }
+.trend .seg-r:hover { filter: brightness(1.25); }
+.tg { display: inline-flex; gap: 6px; align-items: center; color: var(--fg-2); cursor: pointer; }
+.tg input { accent-color: var(--accent); margin: 0; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--fg-2); align-items: center; }
+.tipwrap { position: relative; }
+.tip { position: absolute; z-index: 5; pointer-events: none; background: var(--surface); border: 1px solid var(--line-2); padding: 6px 9px; font-size: 12px; color: var(--fg); min-width: 12ch; max-width: 30ch; box-shadow: 0 4px 16px rgba(0,0,0,.5); }
+.tip b { color: var(--bright); font-weight: 500; display: block; margin-bottom: 2px; }
+.tip div { display: flex; justify-content: space-between; gap: 12px; }
+
+/* filters and feed */
+.filters { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-end; }
+.f { display: grid; gap: 2px; font-size: 11px; color: var(--fg-3); letter-spacing: .04em; text-transform: uppercase; min-width: 0; }
+.f select, .f input { font: inherit; font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--fg); background: var(--surface); border: 1px solid var(--line-2); border-radius: 2px; padding: 4px 6px; min-width: 0; max-width: 100%; }
+.f input { width: 100%; }
+.f.q { flex: 1 1 16ch; }
+.btn { font: inherit; font-size: 12.5px; color: var(--fg-2); background: transparent; border: 1px solid var(--line-2); padding: 4px 10px; cursor: pointer; border-radius: 2px; }
+.btn:hover { color: var(--bright); border-color: var(--fg-2); }
+.count { font-size: 12.5px; color: var(--fg-2); margin: 10px 0 0; }
+.feed { list-style: none; margin: 0; padding: 0; display: grid; }
+.it { display: grid; grid-template-columns: 7ch minmax(0, 1fr); gap: 2px 12px; padding: 11px 0; border-top: 1px dashed var(--line); }
+.it:first-child { border-top: 0; }
+.it .left { display: grid; gap: 4px; align-content: start; justify-items: start; font-size: 12px; color: var(--fg-2); }
+.it .body { display: grid; gap: 4px; min-width: 0; }
+.it .t { font-weight: 600; color: var(--bright); line-height: 1.35; overflow-wrap: anywhere; }
+.it .t a { text-decoration-color: var(--fg-3); }
+.it .s { margin: 0; color: var(--fg-2); font-size: 13px; max-width: 82ch; }
+.it .m { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--fg-3); align-items: center; }
+.it .m .tag { color: var(--fg-2); }
+.it .m .tag::before { content: "#"; color: var(--fg-3); }
+.it .m .pub { color: var(--fg); }
+.it .m .new { color: var(--bg); background: var(--accent); padding: 0 5px; font-weight: 600; font-size: 11px; border-radius: 2px; }
+.it .m .st-disputed, .it .m .st-reported { color: var(--fg-2); }
+.it .m .st-confirmed { color: var(--fg); }
+.it details { font-size: 12px; color: var(--fg-3); border: 0; }
+.it details summary { cursor: pointer; list-style: none; width: max-content; }
+.it details summary::-webkit-details-marker { display: none; }
+.it details summary::before { content: "[+] "; }
+.it details[open] summary::before { content: "[-] "; }
+.it details p { margin: 4px 0 0; max-width: 82ch; color: var(--fg-2); }
+.it.sel-0 { background: none; }
+@media (max-width: 560px) { .mx td:first-child small { display: none; } .mx td:first-child { white-space: nowrap; } .it { grid-template-columns: minmax(0, 1fr); } .it .left { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; } }
+.more { justify-self: center; margin-top: 10px; }
+
+/* who and how */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 24px; }
+.hb { display: grid; gap: 4px; font-size: 13px; }
+.hb .row { display: grid; grid-template-columns: minmax(8ch, 15ch) minmax(0, 1fr) 4ch; gap: 8px; align-items: center; background: none; border: 0; padding: 3px 0; font: inherit; color: var(--fg); text-align: left; cursor: pointer; width: 100%; }
+.hb .row:hover .nm, .hb .row[aria-pressed="true"] .nm { color: var(--bright); text-shadow: var(--glow); }
+.hb .row[aria-pressed="true"] .nm::before { content: "> "; color: var(--accent); }
+.hb .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hb .track { display: flex; height: 12px; gap: 2px; }
+.hb .track i { display: block; height: 100%; background: var(--c); min-width: 2px; }
+.hb .track i:last-child { border-radius: 0 3px 3px 0; }
+.hb .n { text-align: right; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.hb h4 { margin: 0 0 4px; font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+
+/* run log and archive */
+.runlog { display: grid; gap: 8px; }
+.runlog h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.05; color: var(--bright); text-shadow: var(--glow); }
+.runlog p { margin: 0; font-size: 13.5px; max-width: 80ch; }
+.runlog .meta { font-size: 12px; color: var(--fg-3); }
+.arch details { border-top: 1px dashed var(--line); }
+.arch details:last-child { border-bottom: 1px dashed var(--line); }
+.arch summary { cursor: pointer; padding: 7px 0; display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; list-style: none; font-size: 13px; }
+.arch summary::-webkit-details-marker { display: none; }
+.arch summary::before { content: "[+]"; color: var(--fg-3); }
+.arch details[open] summary::before { content: "[-]"; }
+.arch summary .d { color: var(--fg-3); }
+.arch .body { padding: 0 0 10px 4ch; font-size: 13px; color: var(--fg-2); display: grid; gap: 6px; }
+.arch .body p { margin: 0; max-width: 80ch; }
+
+.notes { font-size: 12.5px; color: var(--fg-2); display: grid; gap: 7px; max-width: 84ch; }
+.notes p { margin: 0; }
+.notes p::before { content: "# "; color: var(--fg-3); }
+.notes dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 12px; }
+.notes dt { margin: 0; }
+.notes dd { margin: 0; }
+.foot { font-size: 11.5px; color: var(--fg-3); display: flex; gap: 8px 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 10px; }
+.empty { color: var(--fg-3); font-size: 13px; padding: 8px 0; }
+.err { color: var(--sev-critical); }
+@media (prefers-reduced-motion: reduce) { .cursor::after { animation: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="box"><span class="legend">./agent-watch --version</span>
+<pre class="banner" aria-label="AGENT WATCH">   _   ___ ___ _  _ _____      __      ___ _____ ___ _  _
+  /_\ / __| __| \| |_   _|___  \ \    / /_\_   _/ __| || |
+ / _ \ (_ | _|| .` | | | |___|  \ \/\/ / _ \| || (__| __ |
+/_/ \_\___|___|_|\_| |_|         \_/\_/_/ \_\_| \___|_||_|</pre>
+      <div class="sysline">
+        <div>AI SECURITY THREAT FEED · agent incidents · ai vulnerabilities · cyber capability · evaluator news</div>
+        <div id="asof">loading the latest run…</div>
+        <div id="stale" class="warn" hidden></div>
+      </div>
+    </div>
+    <div class="prompt cursor" id="prompt">./agent-watch --since 7d</div>
+    <nav class="jump" aria-label="Sections">
+      <a href="#matrix-box">severity</a><a href="#feed-box">feed</a><a href="#who-box">vendors &amp; techniques</a>
+      <a href="#trend-box">trend</a><a href="#log-box">run log</a><a href="#notes">readme</a>
+    </nav>
+    <div class="seg" id="win" role="group" aria-label="Time window">
+      <span class="cl">window</span>
+      <button type="button" data-win="1" aria-pressed="false">24h</button>
+      <button type="button" data-win="7" aria-pressed="true">7d</button>
+      <button type="button" data-win="30" aria-pressed="false">30d</button>
+      <button type="button" data-win="90" aria-pressed="false">90d</button>
+      <button type="button" data-win="0" aria-pressed="false">all</button>
+    </div>
+  </header>
+
+  <section class="box" aria-label="Readouts"><span class="legend">status --window</span>
+    <div class="tiles" id="tiles">
+      <div class="tile"><div class="k">New this run</div><div class="v">—</div><div class="s">loading</div></div>
+      <div class="tile"><div class="k">Critical + high</div><div class="v">—</div><div class="s">loading</div></div>
+      <div class="tile"><div class="k">Agent incidents</div><div class="v">—</div><div class="s">loading</div></div>
+      <div class="tile"><div class="k">AI vulnerabilities</div><div class="v">—</div><div class="s">loading</div></div>
+    </div>
+  </section>
+
+  <section class="box" id="matrix-box"><span class="legend">grep -c severity by-track</span>
+    <div style="display:grid;gap:10px">
+      <p class="note" id="matrix-note">items disclosed in the window, by track and severity. select a count to filter the feed.</p>
+      <div class="mxwrap"><table class="mx" id="matrix"><thead></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="box" id="feed-box"><span class="legend">tail -f feed.log</span>
+    <div style="display:grid;gap:4px">
+      <div class="filters" id="filters">
+        <label class="f">track<select id="f-track"><option value="">all tracks</option></select></label>
+        <label class="f">severity<select id="f-sev">
+          <option value="">any</option><option value="critical">critical</option><option value="high">high and up</option>
+          <option value="medium">medium and up</option><option value="low">low and up</option></select></label>
+        <label class="f">vendor<select id="f-vendor"><option value="">any vendor</option></select></label>
+        <label class="f">technique<select id="f-tech"><option value="">any technique</option></select></label>
+        <label class="f">sort<select id="f-sort"><option value="date">newest first</option><option value="sev">most severe first</option></select></label>
+        <label class="f q">search<input id="f-q" type="search" placeholder="title, cve, product, publisher" autocomplete="off"></label>
+        <button type="button" class="btn" id="f-reset">reset</button>
+      </div>
+      <p class="count" id="count" aria-live="polite">—</p>
+      <ol class="feed" id="feed"></ol>
+      <button type="button" class="btn more" id="more" hidden>show more</button>
+    </div>
+  </section>
+
+  <section class="box" id="who-box"><span class="legend">sort | uniq -c vendors techniques</span>
+    <div style="display:grid;gap:12px">
+      <p class="note">agent incidents and ai vulnerabilities in the window. bars are stacked by severity on one scale; select a name to filter the feed.</p>
+      <div class="two">
+        <div class="hb" id="vendors"></div>
+        <div class="hb" id="techs"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="box" id="trend-box"><span class="legend">plot weekly.dat</span>
+    <div style="display:grid;gap:10px">
+      <p class="note" id="trend-note">items per week by disclosure date, stacked by severity. track and vendor filters apply.</p>
+      <div class="key"><span id="trend-key"></span><label class="tg"><input type="checkbox" id="t-info"> include info</label></div>
+      <div class="tipwrap trend"><div id="trend"></div><div class="tip" id="trend-tip" hidden></div></div>
+    </div>
+  </section>
+
+  <section class="box" id="log-box"><span class="legend">cat run.log</span>
+    <div class="runlog" id="runlog"><p class="note">the latest run's summary appears here</p></div>
+  </section>
+
+  <section class="box" id="archive"><span class="legend">ls -l runs/</span>
+    <div class="arch" id="arch"></div>
+  </section>
+
+  <section class="box" id="notes"><span class="legend">cat README</span>
+    <div class="notes">
+      <p>A run collects what was disclosed since the previous run. Each item is dated by when its source first published it, which can be days or months after the event. Windows count back from the latest run's date, not from today, so a missed run does not empty the page.</p>
+      <dl>
+        <dt><b>incident</b></dt><dd>an AI model or agent acted outside its scope on real systems, or was exploited or used to run a real attack</dd>
+        <dt><b>vuln</b></dt><dd>a disclosed flaw or working exploit in an AI product, agent framework, MCP server, model-serving stack or AI dev tool</dd>
+        <dt><b>capability</b></dt><dd>measurements of models' offensive cyber ability, and of models gaming or recognizing evaluations</dd>
+        <dt><b>evaluator</b></dt><dd>other findings, methods, funding, deals and policy from the organizations that evaluate AI safety</dd>
+      </dl>
+      <dl>
+        <dt><span class="sev s-critical">crit</span></dt><dd>confirmed compromise of a real third party or production system by or through an AI system; actively exploited; CVSS 9.0 or higher</dd>
+        <dt><span class="sev s-high">high</span></dt><dd>unsanctioned or destructive action on live systems; working exploit against a shipped AI product; CVSS 7.0–8.9; a large measured jump in offensive capability</dd>
+        <dt><span class="sev s-medium">med</span></dt><dd>CVSS 4.0–6.9; a new attack technique shown in research; routine capability results</dd>
+        <dt><span class="sev s-low">low</span></dt><dd>CVSS below 4.0; minor issues</dd>
+        <dt><span class="sev s-info">info</span></dt><dd>analysis, follow-ups, methods, funding, policy</dd>
+      </dl>
+      <p>A vulnerability with a published CVSS score takes that score's band. Status says who stands behind an incident or vulnerability: confirmed means the affected vendor, operator or an official body confirmed it; reported means a researcher or the press reported it; disputed means the named party disputes it.</p>
+      <p>Sources: the GitHub Advisory Database for AI-ecosystem packages, the AI Incident Database, security researchers' and vendors' disclosures, AI security institutes (UK AISI, US CAISI and others), evaluators' own publications, and major press. Every item links to the page it was taken from. Before a run is published, a separate checker re-opens its sources and rejects what they do not support.</p>
+      <p>Records before October 10, 2026 were loaded in one batch from an earlier monitor; daily runs start on October 28, 2026. Not affiliated with any organization listed.</p>
+    </div>
+  </section>
+
+  <div class="foot"><span><a href="https://mehrabiani.com/">← mehrabiani.com</a></span><span>AGENT-WATCH</span><span>refreshes daily</span><span><a href="https://github.com/nissmogt/agent-watch">source</a></span><span>EOF</span></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const RAW = 'https://raw.githubusercontent.com/nissmogt/agent-watch/main/data/agentwatch/';
+  const SEV = ['critical', 'high', 'medium', 'low', 'info'];
+  const SEV_SHORT = {critical: 'crit', high: 'high', medium: 'med', low: 'low', info: 'info'};
+  const TRACKS = [
+    {id: 'incident', name: 'agent incidents', sub: 'agents acting out of scope, exploited or used in attacks'},
+    {id: 'vuln', name: 'ai vulnerabilities', sub: 'flaws and working exploits in AI products'},
+    {id: 'capability', name: 'cyber capability', sub: 'measured offensive skill and test gaming'},
+    {id: 'evaluator', name: 'evaluator news', sub: 'findings, funding and policy from evaluators'},
+  ];
+  const TRACK = Object.fromEntries(TRACKS.map((t) => [t.id, t]));
+  const PAGE = 40;
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  const safeUrl = (u) => (/^https:\/\//.test(String(u)) ? String(u) : '#');
+  const day = (iso) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ''); return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) : NaN; };
+  const iso = (t) => new Date(t).toISOString().slice(0, 10);
+  const fmt = (s, year) => { const t = day(s); if (isNaN(t)) return ''; const d = new Date(t); return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + (year ? ', ' + d.getUTCFullYear() : ''); };
+  const sevRank = (s) => SEV.indexOf(s);
+  const badge = (s) => '<span class="sev s-' + esc(s) + '" title="severity: ' + esc(s) + '">' + esc(SEV_SHORT[s] || s) + '</span>';
+
+  const S = {info: false, win: 7, track: '', sev: '', vendor: '', tech: '', q: '', sort: 'date', limit: PAGE, cell: null};
+  let M = null, ITEMS = [], LATEST = '', LAST_ADDED = '';
+
+  async function getJSON(name) {
+    const tries = location.protocol === 'file:' ? [RAW] : ['data/agentwatch/', RAW];
+    let last = null;
+    for (const base of tries) {
+      try {
+        const r = await fetch(base + name, {cache: 'no-cache'});
+        if (r.ok) return await r.json();
+        last = new Error(name + ': HTTP ' + r.status);
+      } catch (e) { last = e; }
+    }
+    throw last;
+  }
+
+  // ------------------------------------------------------------ selection
+  // 24h means the latest run's date and the day before, since items carry a disclosure day, not a time
+  function since() { return S.win ? iso(day(LATEST) - Math.max(1, S.win - 1) * 86400000) : '0000-00-00'; }
+  function inWindow(it) { return it.date >= since(); }
+  function passes(it, skip) {
+    skip = skip || {};
+    if (!inWindow(it)) return false;
+    if (!skip.track && S.track && it.track !== S.track) return false;
+    if (!skip.sev && S.sev && sevRank(it.severity) > sevRank(S.sev)) return false;
+    if (!skip.vendor && S.vendor && !(it.vendors || []).includes(S.vendor)) return false;
+    if (!skip.tech && S.tech && it.technique !== S.tech) return false;
+    if (S.cell && !skip.cell && (it.track !== S.cell.track || it.severity !== S.cell.sev)) return false;
+    if (S.q) {
+      const hay = [it.title, it.summary, it.publisher, it.products, it.cve, it.ghsa, (it.vendors || []).join(' '), it.technique, it.aiid ? 'aiid ' + it.aiid : ''].join(' ').toLowerCase();
+      if (!hay.includes(S.q)) return false;
+    }
+    return true;
+  }
+  const winLabel = () => (S.win === 0 ? 'all time' : S.win === 1 ? 'the last 24h (' + fmt(LATEST) + ' and the day before)' : 'the last ' + S.win + ' days (' + fmt(since()) + ' – ' + fmt(LATEST) + ')');
+
+  // ------------------------------------------------------------ header and readouts
+  function drawHead() {
+    const run = M.runs[0];
+    $('asof').innerHTML = 'last run <b>' + esc(fmt(run.date, true)) + '</b> · covering ' + esc(fmt(run.window_from, true)) + ' – ' + esc(fmt(run.window_to, true)) +
+      ' · <b>' + esc(M.items.toLocaleString('en')) + '</b> items in ' + esc(M.runs.length) + (M.runs.length === 1 ? ' run' : ' runs');
+    const age = Math.round((Date.now() - day(run.date)) / 86400000);
+    const st = $('stale');
+    st.hidden = age <= 2;
+    if (!st.hidden) st.textContent = '! the latest run is ' + age + ' days old; the daily refresh may have stopped';
+    $('prompt').textContent = './agent-watch --since ' + (S.win ? S.win === 1 ? '24h' : S.win + 'd' : 'all');
+    for (const b of $('win').querySelectorAll('button')) b.setAttribute('aria-pressed', String(+b.dataset.win === S.win));
+  }
+
+  function sevLine(list) {
+    const c = {};
+    for (const it of list) c[it.severity] = (c[it.severity] || 0) + 1;
+    const parts = SEV.filter((s) => c[s]).map((s) => badge(s) + ' <span class="num">' + c[s] + '</span>');
+    return parts.length ? parts.join(' ') : '<span class="muted">none</span>';
+  }
+  function drawTiles() {
+    const fresh = ITEMS.filter((it) => it.added === LAST_ADDED);
+    const win = ITEMS.filter((it) => inWindow(it));
+    const ch = win.filter((it) => it.severity === 'critical' || it.severity === 'high');
+    const inc = win.filter((it) => it.track === 'incident');
+    const vul = win.filter((it) => it.track === 'vuln');
+    const cves = new Set(vul.map((it) => it.cve).filter(Boolean));
+    const run = M.runs[0];
+    const tiles = [
+      ['New this run', fresh.length, (run.backfill ? 'initial load · ' : '') + sevLine(fresh)],
+      ['Critical + high', ch.length, 'in ' + (S.win ? S.win === 1 ? '24h' : S.win + 'd' : 'all time') + ' · ' + sevLine(ch)],
+      ['Agent incidents', inc.length, sevLine(inc)],
+      ['AI vulnerabilities', vul.length, cves.size + ' with a CVE · ' + sevLine(vul)],
+    ];
+    $('tiles').innerHTML = tiles.map(([k, v, s]) => '<div class="tile"><div class="k">' + esc(k) + '</div><div class="v num">' + esc(v) + '</div><div class="s">' + s + '</div></div>').join('');
+  }
+
+  // ------------------------------------------------------------ severity × track
+  function drawMatrix() {
+    const list = ITEMS.filter((it) => passes(it, {track: true, sev: true, cell: true}));
+    const n = (t, s) => list.filter((it) => (!t || it.track === t) && (!s || it.severity === s)).length;
+    const max = Math.max(1, ...TRACKS.flatMap((t) => SEV.map((s) => n(t.id, s))));
+    $('matrix').tHead.innerHTML = '<tr><th>track</th>' + SEV.map((s) => '<th>' + badge(s) + '</th>').join('') + '<th>total</th></tr>';
+    const cell = (t, s) => {
+      const v = n(t, s);
+      const on = S.cell && S.cell.track === t && S.cell.sev === s;
+      return '<td><button type="button" class="' + (v ? '' : 'zero') + '" data-cell="' + t + '|' + s + '" aria-pressed="' + on + '" aria-label="' + v + ' ' + s + ' ' + esc(TRACK[t].name) + '">' + v +
+        (v ? '<span class="bar s-' + s + '"><i style="--w:' + (100 * v / max).toFixed(1) + '%"></i></span>' : '') + '</button></td>';
+    };
+    $('matrix').tBodies[0].innerHTML = TRACKS.map((t) => '<tr><td>' + esc(t.name) + '<small>' + esc(t.sub) + '</small></td>' + SEV.map((s) => cell(t.id, s)).join('') +
+      '<td style="padding:8px" class="num">' + n(t.id, '') + '</td></tr>').join('') +
+      '<tr class="tot"><td>all tracks</td>' + SEV.map((s) => '<td style="padding:6px 8px" class="num">' + n('', s) + '</td>').join('') + '<td style="padding:6px 8px" class="num">' + list.length + '</td></tr>';
+    $('matrix-note').textContent = 'items disclosed in ' + winLabel() + ', by track and severity. select a count to filter the feed; select it again to clear.';
+  }
+
+  // ------------------------------------------------------------ weekly trend
+  function drawTrend() {
+    const box = $('trend');
+    const list = ITEMS.filter((it) => passesIgnoringWindow(it) && (S.info || it.severity !== 'info'));
+    const weeks = S.win && S.win <= 30 ? 13 : S.win === 90 ? 13 : 30;
+    const end = day(LATEST);
+    const monday = (t) => { const d = new Date(t); const k = (d.getUTCDay() + 6) % 7; return t - k * 86400000; };
+    const lastWeek = monday(end);
+    const starts = [];
+    for (let i = weeks - 1; i >= 0; i--) starts.push(lastWeek - i * 7 * 86400000);
+    const bins = starts.map((t) => ({t, c: Object.fromEntries(SEV.map((s) => [s, 0]))}));
+    for (const it of list) {
+      const t = day(it.date);
+      if (t < starts[0] || t > end) continue;
+      const k = Math.floor((t - starts[0]) / (7 * 86400000));
+      if (bins[k]) bins[k].c[it.severity] += 1;
+    }
+    const W = Math.max(320, box.clientWidth || 900), H = 190, L = 34, R = 6, T = 8, B = 24;
+    const top = Math.max(4, ...bins.map((b) => SEV.reduce((a, s) => a + (S.info || s !== 'info' ? b.c[s] : 0), 0)));
+    const step = top <= 8 ? 2 : top <= 20 ? 5 : top <= 50 ? 10 : 25;
+    const ymax = Math.ceil(top / step) * step;
+    const y = (v) => T + (H - T - B) * (1 - v / ymax);
+    const bw = (W - L - R) / weeks;
+    const barW = Math.max(3, Math.min(30, bw - 4));
+    let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Items per week by severity over the last ' + weeks + ' weeks"><g class="grid">';
+    for (let v = 0; v <= ymax; v += step) svg += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"></line>';
+    svg += '</g><g class="ax">';
+    for (let v = 0; v <= ymax; v += step) svg += '<text x="' + (L - 6) + '" y="' + (y(v) + 4).toFixed(1) + '" text-anchor="end">' + v + '</text>';
+    const every = Math.max(1, Math.ceil(weeks / Math.max(2, Math.floor((W - L) / 78))));
+    bins.forEach((b, i) => { if ((weeks - 1 - i) % every === 0) svg += '<text x="' + (L + i * bw + bw / 2).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + fmt(iso(b.t)) + '</text>'; });
+    svg += '</g><g>';
+    bins.forEach((b, i) => {
+      let acc = 0;
+      const x = L + i * bw + (bw - barW) / 2;
+      const order = SEV.slice().reverse().filter((s) => S.info || s !== 'info'); // lowest severity at the baseline, critical on top
+      const segs = order.filter((s) => b.c[s]);
+      segs.forEach((s, j) => {
+        const v = b.c[s];
+        const y0 = y(acc), y1 = y(acc + v);
+        const h = Math.max(1, y0 - y1 - (j < segs.length - 1 ? 2 : 0));
+        const yy = y1 + (j < segs.length - 1 ? 2 : 0);
+        const last = j === segs.length - 1;
+        const r = last ? Math.min(4, barW / 2, h) : 0;
+        const p = last
+          ? 'M' + x + ',' + (yy + h) + 'V' + (yy + r) + 'Q' + x + ',' + yy + ' ' + (x + r) + ',' + yy + 'H' + (x + barW - r) + 'Q' + (x + barW) + ',' + yy + ' ' + (x + barW) + ',' + (yy + r) + 'V' + (yy + h) + 'Z'
+          : 'M' + x + ',' + yy + 'h' + barW + 'v' + h + 'h' + (-barW) + 'Z';
+        svg += '<path class="seg-r" d="' + p + '" fill="var(--sev-' + s + ')" data-i="' + i + '"></path>';
+        acc += v;
+      });
+      svg += '<rect x="' + (L + i * bw) + '" y="' + T + '" width="' + bw + '" height="' + (H - T - B) + '" fill="transparent" data-i="' + i + '"></rect>';
+    });
+    svg += '</g></svg>';
+    box.innerHTML = svg;
+    $('trend-key').innerHTML = SEV.filter((s) => S.info || s !== 'info').map((s) => badge(s)).join(' ') + ' <span class="muted">· weeks start monday · critical on top</span>';
+    const tip = $('trend-tip');
+    const svgEl = box.querySelector('svg');
+    const show = (ev) => {
+      const t = ev.target.closest('[data-i]');
+      if (!t) { tip.hidden = true; return; }
+      const b = bins[+t.dataset.i];
+      const total = SEV.reduce((a, s) => a + (S.info || s !== 'info' ? b.c[s] : 0), 0);
+      tip.innerHTML = '<b>week of ' + esc(fmt(iso(b.t), true)) + '</b>' + SEV.filter((s) => b.c[s] && (S.info || s !== 'info')).map((s) => '<div>' + badge(s) + '<span class="num">' + b.c[s] + '</span></div>').join('') + '<div><span>total</span><span class="num">' + total + '</span></div>';
+      tip.hidden = false;
+      const r = svgEl.getBoundingClientRect(), w = box.parentElement.getBoundingClientRect();
+      const k = r.width / W;
+      let left = r.left - w.left + (L + (+t.dataset.i + 0.5) * bw) * k + 10;
+      if (left + tip.offsetWidth > w.width) left = left - tip.offsetWidth - 20;
+      tip.style.left = Math.max(0, left) + 'px';
+      tip.style.top = '8px';
+    };
+    svgEl.addEventListener('pointermove', show);
+    svgEl.addEventListener('pointerleave', () => { tip.hidden = true; });
+    $('trend-note').textContent = 'items per week by disclosure date, last ' + weeks + ' weeks, stacked by severity' + (S.info ? '' : ', info left out') + '. the track, vendor, technique and search filters apply; the window does not.';
+  }
+  function passesIgnoringWindow(it) {
+    if (S.track && it.track !== S.track) return false;
+    if (S.vendor && !(it.vendors || []).includes(S.vendor)) return false;
+    if (S.tech && it.technique !== S.tech) return false;
+    if (S.q) {
+      const hay = [it.title, it.summary, it.publisher, it.products, it.cve, it.ghsa, (it.vendors || []).join(' '), it.technique].join(' ').toLowerCase();
+      if (!hay.includes(S.q)) return false;
+    }
+    return true;
+  }
+
+  // ------------------------------------------------------------ filters and feed
+  function fillSelect(sel, values, label) {
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">' + esc(label) + '</option>' + values.map(([v, t]) => '<option value="' + esc(v) + '">' + esc(t) + '</option>').join('');
+    sel.value = values.some(([v]) => v === cur) ? cur : '';
+  }
+  function drawFilters() {
+    fillSelect($('f-track'), TRACKS.map((t) => [t.id, t.name]), 'all tracks');
+    $('f-track').value = S.track;
+    const vc = new Map(), tc = new Map();
+    for (const it of ITEMS) {
+      if (!inWindow(it)) continue;
+      for (const v of it.vendors || []) vc.set(v, (vc.get(v) || 0) + 1);
+      tc.set(it.technique, (tc.get(it.technique) || 0) + 1);
+    }
+    if (S.vendor && !vc.has(S.vendor)) vc.set(S.vendor, 0);
+    if (S.tech && !tc.has(S.tech)) tc.set(S.tech, 0);
+    fillSelect($('f-vendor'), [...vc].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([v, n]) => [v, v + ' (' + n + ')']), 'any vendor');
+    $('f-vendor').value = S.vendor;
+    fillSelect($('f-tech'), [...tc].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([v, n]) => [v, v + ' (' + n + ')']), 'any technique');
+    $('f-tech').value = S.tech;
+    $('f-sev').value = S.sev;
+    $('f-sort').value = S.sort;
+  }
+  function itemHtml(it) {
+    const tags = [];
+    tags.push('<span class="tag">' + esc(it.track) + '</span>');
+    tags.push('<span class="tag">' + esc(it.technique) + '</span>');
+    if (it.added === LAST_ADDED && !M.runs[0].backfill) tags.unshift('<span class="new">new</span>');
+    const meta = ['<span class="pub">' + esc(it.publisher) + '</span>'];
+    if ((it.vendors || []).length) meta.push('affects ' + esc(it.vendors.join(', ')));
+    if (it.cve) meta.push('<span>' + esc(it.cve) + (it.cvss != null ? ' · CVSS ' + esc(Number(it.cvss).toFixed(1)) : '') + '</span>');
+    else if (it.cvss != null) meta.push('CVSS ' + esc(Number(it.cvss).toFixed(1)));
+    if (it.ghsa) meta.push('<a href="https://github.com/advisories/' + esc(it.ghsa) + '" target="_blank" rel="noopener noreferrer">' + esc(it.ghsa) + '</a>');
+    if (it.aiid) meta.push('<a href="https://incidentdatabase.ai/cite/' + esc(it.aiid) + '/" target="_blank" rel="noopener noreferrer">AIID #' + esc(it.aiid) + '</a>');
+    if (it.status) meta.push('<span class="st-' + esc(it.status) + '">' + esc(it.status) + '</span>');
+    const extra = [it.products ? 'Systems: ' + it.products : '', it.note || ''].filter(Boolean);
+    return '<li class="it"><div class="left">' + badge(it.severity) + '<span class="num">' + esc(fmt(it.date, it.date.slice(0, 4) !== LATEST.slice(0, 4))) + '</span></div>' +
+      '<div class="body"><div class="t"><a href="' + esc(safeUrl(it.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(it.title) + '</a></div>' +
+      '<p class="s">' + esc(it.summary) + '</p><div class="m">' + tags.join(' ') + ' · ' + meta.join(' · ') + '</div>' +
+      (extra.length ? '<details><summary>details</summary>' + extra.map((e) => '<p>' + esc(e) + '</p>').join('') + '</details>' : '') + '</div></li>';
+  }
+  function drawFeed() {
+    let list = ITEMS.filter((it) => passes(it));
+    if (S.sort === 'sev') list = list.slice().sort((a, b) => sevRank(a.severity) - sevRank(b.severity) || (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+    const total = ITEMS.filter(inWindow).length;
+    const bits = [];
+    if (S.cell) bits.push(S.cell.sev + ' ' + TRACK[S.cell.track].name);
+    $('count').textContent = list.length + ' of ' + total + ' items in ' + winLabel() + (bits.length ? ' · showing ' + bits.join(', ') : '') + (S.sort === 'sev' ? ' · most severe first' : ' · newest first');
+    $('feed').innerHTML = list.length ? list.slice(0, S.limit).map(itemHtml).join('') : '<li class="empty">nothing matches. widen the window or reset the filters.</li>';
+    const more = $('more');
+    more.hidden = list.length <= S.limit;
+    more.textContent = 'show ' + Math.min(PAGE, list.length - S.limit) + ' more';
+  }
+
+  // ------------------------------------------------------------ vendors and techniques
+  function hbar(boxId, title, key, values, picked) {
+    const list = ITEMS.filter((it) => (it.track === 'incident' || it.track === 'vuln') && passes(it, {[key]: true, cell: true}));
+    const counts = new Map();
+    for (const it of list) for (const v of values(it)) {
+      if (!counts.has(v)) counts.set(v, Object.fromEntries(SEV.map((s) => [s, 0])));
+      counts.get(v)[it.severity] += 1;
+    }
+    const rows = [...counts].map(([v, c]) => ({v, c, n: SEV.reduce((a, s) => a + c[s], 0), w: c.critical * 1000 + c.high})).sort((a, b) => b.n - a.n || b.w - a.w || a.v.localeCompare(b.v)).slice(0, 12);
+    const max = Math.max(1, ...rows.map((r) => r.n));
+    $(boxId).innerHTML = '<h4>' + esc(title) + '</h4>' + (rows.length ? rows.map((r) => '<button type="button" class="row" data-' + key + '="' + esc(r.v) + '" aria-pressed="' + (picked === r.v) + '" title="' + esc(SEV.filter((s) => r.c[s]).map((s) => r.c[s] + ' ' + s).join(', ')) + '"><span class="nm">' + esc(r.v) + '</span><span class="track">' +
+      SEV.filter((s) => r.c[s]).map((s) => '<i class="s-' + s + '" style="width:' + (100 * r.c[s] / max).toFixed(2) + '%"></i>').join('') + '</span><span class="n">' + r.n + '</span></button>').join('') : '<p class="empty">no incidents or vulnerabilities in this window</p>');
+  }
+
+  // ------------------------------------------------------------ run log and archive
+  function drawRuns() {
+    const run = M.runs[0];
+    $('runlog').innerHTML = '<h3>' + esc(run.title) + '</h3><p>' + esc(run.summary) + '</p><div class="meta">run ' + esc(fmt(run.date, true)) + ' · ' + esc(run.run_at) + ' · ' + esc(run.count) + ' items · ' + sevLine(ITEMS.filter((it) => it.added === run.date)) + '</div>' +
+      (run.sources_note ? '<p class="note">' + esc(run.sources_note) + '</p>' : '');
+    $('arch').innerHTML = M.runs.map((r) => '<details><summary><span>' + esc(fmt(r.date, true)) + '</span><span>' + esc(r.title) + '</span><span class="d">' + esc(r.count) + ' items · ' + esc(fmt(r.window_from)) + '–' + esc(fmt(r.window_to)) + '</span></summary><div class="body"><p>' + esc(r.summary) + '</p>' +
+      (r.sources_note ? '<p class="note">' + esc(r.sources_note) + '</p>' : '') + '</div></details>').join('');
+  }
+
+  // ------------------------------------------------------------ draw and wire
+  function draw() {
+    drawHead(); drawTiles(); drawMatrix(); drawFilters(); drawFeed(); drawTrend();
+    hbar('vendors', 'vendors affected', 'vendor', (it) => it.vendors || [], S.vendor);
+    hbar('techs', 'techniques', 'tech', (it) => [it.technique], S.tech);
+  }
+  function fail(e) {
+    $('asof').innerHTML = '<span class="err">could not load the feed: ' + esc(e && e.message) + '</span>';
+  }
+  $('win').addEventListener('click', (e) => { const b = e.target.closest('button[data-win]'); if (!b) return; S.win = +b.dataset.win; S.limit = PAGE; S.cell = null; draw(); });
+  $('matrix').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-cell]'); if (!b) return;
+    const [t, s] = b.dataset.cell.split('|');
+    S.cell = S.cell && S.cell.track === t && S.cell.sev === s ? null : {track: t, sev: s};
+    S.limit = PAGE; draw();
+    if (S.cell) $('feed-box').scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  for (const [id, k] of [['f-track', 'track'], ['f-sev', 'sev'], ['f-vendor', 'vendor'], ['f-tech', 'tech'], ['f-sort', 'sort']]) {
+    $(id).addEventListener('change', (e) => { S[k] = e.target.value || (k === 'sort' ? 'date' : ''); S.limit = PAGE; if (k !== 'sort') S.cell = null; draw(); });
+  }
+  $('f-q').addEventListener('input', (e) => { S.q = e.target.value.trim().toLowerCase(); S.limit = PAGE; draw(); });
+  $('f-reset').addEventListener('click', () => { Object.assign(S, {track: '', sev: '', vendor: '', tech: '', q: '', sort: 'date', limit: PAGE, cell: null}); $('f-q').value = ''; draw(); });
+  $('t-info').addEventListener('change', (e) => { S.info = e.target.checked; drawTrend(); });
+  $('more').addEventListener('click', () => { S.limit += PAGE; drawFeed(); });
+  $('who-box').addEventListener('click', (e) => {
+    const b = e.target.closest('button.row'); if (!b) return;
+    if (b.dataset.vendor !== undefined) S.vendor = S.vendor === b.dataset.vendor ? '' : b.dataset.vendor;
+    if (b.dataset.tech !== undefined) S.tech = S.tech === b.dataset.tech ? '' : b.dataset.tech;
+    S.limit = PAGE; S.cell = null; draw();
+  });
+  let rt = 0;
+  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (M) drawTrend(); }, 150); });
+
+  Promise.all([getJSON('manifest.json'), getJSON('feed.json')]).then(([m, f]) => {
+    M = m; ITEMS = f.items || []; LATEST = m.updated; LAST_ADDED = m.runs[0].date;
+    drawRuns(); draw();
+  }).catch(fail);
+})();
+</script>
+</body>
+</html>

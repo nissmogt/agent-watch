@@ -1,0 +1,29 @@
+name: agent-watch-guard
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  agent-watch-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Only data/agentwatch/ may change, and earlier runs stay as they were
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          changed=$(git diff --name-only "$base"..."$head")
+          echo "$changed"
+          bad=$(echo "$changed" | grep -v '^data/agentwatch/' || true)
+          if [ -n "$bad" ]; then echo "::error::Files outside data/agentwatch/ changed:"; echo "$bad"; exit 1; fi
+          modified=$(git diff --name-only --diff-filter=MDR "$base"..."$head" | grep -E '^data/agentwatch/runs/' || true)
+          if [ -n "$modified" ]; then echo "::error::Existing runs modified or deleted:"; echo "$modified"; exit 1; fi
+      - name: Validate data and confirm the generated files are current
+        run: |
+          python3 -I scripts/aw_update.py
+          git diff --exit-code -- data/agentwatch/feed.json data/agentwatch/manifest.json || { echo "::error::feed.json or manifest.json is out of date; run scripts/aw_update.py"; exit 1; }
