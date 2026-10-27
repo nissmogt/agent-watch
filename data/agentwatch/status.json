@@ -1,8 +1,8 @@
 {
- "state": "collecting",
- "title": "Collecting October 10–27, 2026",
+ "state": "idle",
+ "title": "October 10–27 collected and published",
  "detail": "Items through October 9 are below. Four research passes are reading the GitHub Advisory Database, the AI Incident Database, researchers' disclosures, AI security institutes and evaluators for October 10 to 27; a separate check of every source follows before they publish. This bar disappears when they do.",
- "updated": "2026-10-27T13:49:01-07:00",
+ "updated": "2026-10-27T13:54:46-07:00",
  "steps": [
   {
    "label": "agent incidents",
@@ -26,11 +26,13 @@
   },
   {
    "label": "source check",
-   "state": "running"
+   "state": "done",
+   "note": "40 sources re-opened; 5 items dropped and 5 corrected"
   },
   {
    "label": "publish",
-   "state": "waiting"
+   "state": "done",
+   "note": "47 items"
   }
  ]
 }
