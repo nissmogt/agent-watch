@@ -1,8 +1,26 @@
 {
- "updated": "2026-10-27",
- "run_at": "2026-10-27T14:10:00-07:00",
- "items": 296,
+ "updated": "2026-10-29",
+ "run_at": "2026-10-29T18:05:00-07:00",
+ "items": 299,
  "runs": [
+  {
+   "date": "2026-10-29",
+   "run_at": "2026-10-29T18:05:00-07:00",
+   "window_from": "2026-10-27",
+   "window_to": "2026-10-29",
+   "title": "Open-weight GLM 5.3 built working Firefox exploits from security fixes",
+   "summary": "Three items. Epoch AI reported that the open-weight GLM 5.3 turned security fixes into file-stealing exploits for six Firefox releases, and Irregular separately measured the same model completing 3 of 13 multi-stage cyber scenarios. Pillar Security disclosed a high-severity code-injection flaw (CVSS 8.6) in Unsloth's model loader that runs even with trust_remote_code off.",
+   "sources_note": "Read: Pillar Security, Zenity and Trail of Bits blog indexes; Irregular, Apollo Research, METR, UK AISI and Epoch AI indexes; NIST CAISI news page. Could not read: no GitHub Advisory Database page was reachable this run (searches returned only mirrors), so no GitHub advisories are included for October 27 to 29; no AI Incident Database record above 1788 could be opened, so incidents were not checked; indexes for Palisade, Redwood, Transluce, Goodfire, FAR.AI posts in the window, Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, the Japan, Korea and Singapore AISIs, Noma, HiddenLayer, Unit 42, Wiz, Embrace The Red, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI and OECD were not opened; searches for them found nothing in the window. The Unsloth CVE was published by VulnCheck on September 28; Pillar's write-up is new.",
+   "backfill": false,
+   "count": 3,
+   "by_severity": {
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-10-27",
    "run_at": "2026-10-27T14:10:00-07:00",

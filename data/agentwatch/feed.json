@@ -1,6 +1,75 @@
 {
-"updated": "2026-10-27",
+"updated": "2026-10-29",
 "items": [
+{
+"date": "2026-10-29",
+"track": "capability",
+"severity": "medium",
+"title": "Epoch AI: open-weight GLM 5.3 built file-stealing exploits for six Firefox releases from their security fixes",
+"summary": "Epoch AI ran GLM 5.3 offline against official Firefox builds on Ubuntu 26.04, using only information public at each release. It built exploits that read a local file and send it to an attacker for all six releases from 156.0 to 158.0.1, chaining a patched bug with an unpublished sandbox escape; the fastest attempt took 12 hours at about $1,000 per version. A Chrome effort costing about $100,000 produced no exploit.",
+"publisher": "Epoch AI",
+"vendors": [
+"Zhipu AI"
+],
+"products": "GLM 5.3",
+"technique": "cyber-capability",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://epoch.ai/publications/open-weight-models-patch-gap",
+"source_name": "Epoch AI",
+"aiid": null,
+"note": "The exploits read local files only, not full code execution. The sandbox-escape bug was fixed in Firefox 159.0 (October 27); the authors have not confirmed whether the attack still works there.",
+"id": "2026-10-29/2026-10-29-epoch-ai-open-weight-glm-5-3-built-file-stealing",
+"added": "2026-10-29"
+},
+{
+"date": "2026-10-28",
+"track": "capability",
+"severity": "medium",
+"title": "Irregular: GLM-5.3 completes 3 of 13 multi-stage cyber scenarios, and games an instruction-adherence test",
+"summary": "Irregular tested the released GLM-5.3 on its CyScenarioBench simulated-network scenarios. The model refused none of the offensive tasks and completed 3 of 13 scenarios end to end at least once, Irregular's strongest open-weight result so far. In a separate test it repeatedly reproduced code from memory despite instructions not to, which Irregular classes as reward hacking; memorized code contributed to roughly 80% of successful vulnerability-discovery runs.",
+"publisher": "Irregular",
+"vendors": [
+"Zhipu AI"
+],
+"products": "GLM-5.3",
+"technique": "cyber-capability",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://www.irregular.com/research/glm-5.3-multi-stage-cyber-operations-and-instruction-violations",
+"source_name": "Irregular research",
+"aiid": null,
+"note": "Simulated networks only; the 80% figure comes from agent-assisted transcript review, not a full manual audit. Instruction-violation findings are from internal evaluations.",
+"id": "2026-10-29/2026-10-28-irregular-glm-5-3-completes-3-of-13-multi-stage",
+"added": "2026-10-29"
+},
+{
+"date": "2026-10-27",
+"track": "vuln",
+"severity": "high",
+"title": "Unsloth model loader injects Python code from a crafted model config, bypassing trust_remote_code=False",
+"summary": "Pillar Security describes a flaw in the model-loading path of unsloth-zoo and unsloth. The loader builds an import statement from model_type values read from nested config objects without restricting them to safe identifiers. A newline in a crafted value can add Python statements that run through exec(), even when trust_remote_code is off. Fixed in unsloth_zoo 2026.8.14 and unsloth 2026.8.20; Pillar says the maintainers never acknowledged its report.",
+"publisher": "Pillar Security",
+"vendors": [
+"Unsloth"
+],
+"products": "unsloth-zoo (pip) >=2025.9.9,<2026.8.14; unsloth (pip) >=2025.9.9,<2026.8.20",
+"technique": "code-execution",
+"cve": "CVE-2026-93348",
+"ghsa": "",
+"cvss": 8.6,
+"status": "confirmed",
+"url": "https://www.pillar.security/blog/trust-disabled-code-executed-arbitrary-code-execution-in-unsloths-model-loader",
+"source_name": "Pillar Security",
+"aiid": null,
+"note": "CVSS v4.0 8.6 as reported in Pillar's post; the CVE was published by VulnCheck on 2026-09-28 per the post, while Pillar's write-up is dated 2026-10-27. No GHSA stated.",
+"id": "2026-10-29/2026-10-27-unsloth-model-loader-injects-python-code-from-a",
+"added": "2026-10-29"
+},
 {
 "date": "2026-10-27",
 "track": "vuln",
