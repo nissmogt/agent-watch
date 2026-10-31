@@ -1,0 +1,12 @@
+{
+ "date": "2026-10-30",
+ "run_at": "2026-10-30T17:51:51-07:00",
+ "window_from": "2026-10-29",
+ "window_to": "2026-10-30",
+ "title": "Quiet day",
+ "summary": "No new AI-security item was first published in the 29-30 October window across the four tracks. AI Incident Database records 1789-1793 were reviewed; the one in-scope record (1789, AI agents used to reach Anthropic internal systems) was first reported on 26 October, before the window.",
+ "sources_note": "Read: GitHub Advisory Database search results and three advisory pages (all first published before the window; the advisories list page returned stale August entries, so advisory coverage is thin); AI Incident Database records 1784-1793; research or blog indexes of METR, Apollo, UK AISI, Epoch AI, Transluce, FAR.AI, Palisade, Irregular, AVERI, Gray Swan, HiddenLayer, Dreadnode and Cisco AI. Searched without opening a primary page: vendor research disclosures (Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi), US CAISI, Scale AI, Vals AI, EU AI Office, state legislatures, and the Anthropic, OpenAI and Google threat-intelligence pages. Not checked: Japan, Korea and Singapore AISIs, Redwood, SecureBio, AI Evaluator Forum, Promptfoo, Patronus, AIUC, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI and OECD.",
+ "backfill": false,
+ "aiid_checked_to": 1793,
+ "items": []
+}
