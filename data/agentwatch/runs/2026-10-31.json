@@ -1,0 +1,12 @@
+{
+ "date": "2026-10-31",
+ "run_at": "2026-10-31T17:51:10-07:00",
+ "window_from": "2026-10-30",
+ "window_to": "2026-10-31",
+ "title": "Quiet day",
+ "summary": "No new AI-security item was first published in the 30-31 October window across the four tracks. AI Incident Database record 1793 is still the newest; no record above it could be found.",
+ "sources_note": "Read: GitHub advisory list pages (LiteLLM and LangChain repository advisories, a reviewed npm list that returned a stale August snapshot, and a credit search), with no individual GHSA page opened because no in-window advisory surfaced, so advisory coverage is thin; AI Incident Database records 1774-1793 (1793 has no next record; cite/1794 could not be opened); research or blog indexes of Irregular, UK AISI, METR, Epoch AI, Palisade, Apollo, Transluce and FAR.AI, plus the NIST CAISI GLM-5.3 assessment page. Searched without opening a primary page: vendor research disclosures (Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, in grouped queries), Anthropic, OpenAI and Google threat-intelligence reports, Scale AI, Dreadnode, Cisco Foundation AI, Vals AI, Japan, Korea and Singapore AISIs, EU AI Office, Frontier Model Forum and state legislatures. Not checked: Redwood, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Patronus, AIUC, Goodfire, SaferAI, FLI, MLCommons, Partnership on AI and OECD. The FAR.AI blog index could not be fetched on one attempt, though the capability track read it.",
+ "backfill": false,
+ "aiid_checked_to": 1793,
+ "items": []
+}
