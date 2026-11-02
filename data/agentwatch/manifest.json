@@ -1,8 +1,26 @@
 {
- "updated": "2026-10-31",
- "run_at": "2026-10-31T17:51:10-07:00",
+ "updated": "2026-11-01",
+ "run_at": "2026-11-01T17:49:14-08:00",
  "items": 299,
  "runs": [
+  {
+   "date": "2026-11-01",
+   "run_at": "2026-11-01T17:49:14-08:00",
+   "window_from": "2026-10-31",
+   "window_to": "2026-11-01",
+   "title": "Quiet day",
+   "summary": "No new AI-security item was first published in the 31 October to 1 November window across the four tracks. No AI Incident Database record above 1793 could be found.",
+   "sources_note": "Read: GitHub repository advisory lists for LiteLLM, LangChain, vLLM, Open WebUI (page 1 of 17) and ComfyUI, plus one credit-filtered advisory list, with no individual GHSA page opened because none surfaced in window; research or blog indexes of Irregular, Apollo, Epoch AI, METR and FAR.AI, and Palisade's work page. Could not open: AI Incident Database records above 1793 (list pages render only with JavaScript and no search returned a newer record page), the global GitHub advisory list, later pages of the vLLM, LiteLLM and Open WebUI lists, advisory lists for Ollama, MLflow, LangGraph, LlamaIndex, Transformers, Gradio, Langflow, CrewAI, AutoGen, n8n and MCP SDKs, and the Redwood blog archive (fetch refused). Searched without opening a primary page: vendor research disclosures (Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi), Anthropic, OpenAI and Google threat reports, UK AISI, US CAISI, Transluce, Frontier Model Forum, MLCommons, Dreadnode, Vals AI, Scale AI, Cisco Foundation AI, and model launches. Not checked: Nightingale Collective, CISA, Reuters, Wired, The Record, Japan, Korea and Singapore AISIs, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, SaferAI, Partnership on AI, OECD, EU AI Office and state legislatures.",
+   "backfill": false,
+   "count": 0,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-10-31",
    "run_at": "2026-10-31T17:51:10-07:00",
