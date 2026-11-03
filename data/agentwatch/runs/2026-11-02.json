@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-02",
+ "run_at": "2026-11-02T17:46:31-08:00",
+ "window_from": "2026-11-01",
+ "window_to": "2026-11-02",
+ "title": "Quiet day",
+ "summary": "No new AI-security item was first published in the 1 to 2 November window on the sources that could be read. AI Incident Database records 1794 to 1797 were opened, but the database dates their reports 31 October, before this window, so they are not included.",
+ "sources_note": "Read: AI Incident Database homepage and records 1794 to 1797 (highest listed is 1797; no later record found). Records 1794 (VAPOR PANDA, ARTEX agents), 1795 (Chainalysis breach), 1796 (Argentine healthcare breach) and 1797 (OpenAI agents, RubyGems) are in the agent scope but carry a 31 October report date, so they fell outside this window and were dropped; the 31 October to 1 November run could not open them, so they are unpublished, except that the RubyGems event was already published from another source. Read: GitHub advisory list filtered to cwe:29 (newest AI item 25 August), no individual GHSA page; corgea LiteLLM advisory list (newest 27 October); cve.imfht n8n list (newest 30 October: a batch of n8n CVEs dated 28 and 30 October, also before this window and not in the feed, read only from that third-party list); research or blog indexes of Irregular (newest 28 October), UK AISI (26 October), METR (26 August), Apollo (1 October), Palisade (7 May) and Epoch AI (30 October). Searched without opening a primary page, thin coverage: vendor research disclosures, GitHub advisory terms beyond LiteLLM and n8n, Anthropic, OpenAI and Google threat reports, CrowdStrike, BleepingComputer, Wired, The Record, CISA, CAISI, FAR.AI, Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, Japan, Korea and Singapore AISIs, model launches. Not found or not read: Redwood, Transluce, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Mindgard, Lasso, Zenity, HiddenLayer, Noma, Goodfire, EU AI Office, Future of Life Institute, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures.",
+ "backfill": false,
+ "aiid_checked_to": 1797,
+ "items": []
+}
