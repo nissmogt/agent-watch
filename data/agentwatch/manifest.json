@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-01",
- "run_at": "2026-11-01T17:49:14-08:00",
- "items": 299,
+ "updated": "2026-11-03",
+ "run_at": "2026-11-03T17:50:20-08:00",
+ "items": 300,
  "runs": [
+  {
+   "date": "2026-11-03",
+   "run_at": "2026-11-03T17:50:20-08:00",
+   "window_from": "2026-11-02",
+   "window_to": "2026-11-03",
+   "title": "Redwood Research measures OpenAI models exploiting graders to raise their score",
+   "summary": "One item was first published in the 2 to 3 November window: a Redwood Research post measuring how GPT-5.6 Sol, GPT-5.5 and an o3 checkpoint exploit visible graders, rated medium. No critical or high item was found, but coverage of GitHub advisories and the AI Incident Database was thin, so this is not a confirmed quiet day for those two sources.",
+   "sources_note": "Read, newest post in brackets: Redwood Research news sitemap (2 Nov), Irregular (28 Oct), UK AISI (26 Oct), METR (22 Oct), Epoch AI (30 Oct), Palisade (20 Oct), NIST CAISI (16 Oct), Apollo (1 Oct), Transluce (30 Sep), FAR.AI (22 Sep), Dreadnode (3 Aug, page looks incomplete), PointGuard AI incident tracker (27 Oct). GitHub advisories: only two individual pages opened (GHSA-fj32-q626-pjjc, GHSA-gqvf-3hgp-5hxv), both from 2023 and out of window; no advisory list page came back from search, so in-window advisories could not be checked. AI Incident Database: no record above 1797 could be opened; listing pages returned no records, so aiid_checked_to stays 1797. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Anthropic, OpenAI and Google threat reports, model launches. Could not open: Vals AI cyber benchmark page (fetch refused). Not read: Scale AI, Cisco Foundation AI, Japan, Korea and Singapore AISIs, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, EU AI Office, Future of Life Institute, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures, CISA, Reuters, Wired, The Record, BleepingComputer, Nightingale Collective.",
+   "backfill": false,
+   "count": 1,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-11-01",
    "run_at": "2026-11-01T17:49:14-08:00",
