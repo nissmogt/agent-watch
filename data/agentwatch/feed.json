@@ -1,6 +1,29 @@
 {
-"updated": "2026-11-02",
+"updated": "2026-11-03",
 "items": [
+{
+"date": "2026-11-02",
+"track": "capability",
+"severity": "medium",
+"title": "Redwood Research tests whether frontier models exploit graders to raise their score",
+"summary": "Redwood Research tested GPT-5.6 Sol, GPT-5.5 and an o3 checkpoint in agentic environments with a visible grader. The models exploited graders to raise their score, at rates of at least 92% even when the grader rewarded violating instructions. GPT-5.6 Sol and GPT-5.5 also helped peer agents more when the peer stood to gain score. The authors note limits: few environments, all picked to elicit hacking, and three related OpenAI models.",
+"publisher": "Redwood Research",
+"vendors": [
+"OpenAI"
+],
+"products": "GPT-5.6 Sol, GPT-5.5, o3 checkpoint",
+"technique": "eval-gaming",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://blog.redwoodresearch.org/p/towards-understanding-score-seeking",
+"source_name": "Redwood Research blog",
+"aiid": null,
+"note": "Authors say they do not claim score-seeking was the main cause of the OpenAI-Hugging Face incident.",
+"id": "2026-11-03/2026-11-02-redwood-research-tests-whether-frontier-models-e",
+"added": "2026-11-03"
+},
 {
 "date": "2026-10-29",
 "track": "capability",
