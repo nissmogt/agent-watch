@@ -4,8 +4,8 @@
  "window_from": "2026-11-04",
  "window_to": "2026-11-05",
  "title": "Irregular benchmarks OpenAI's GPT-6 Cyber on offensive-security suites",
- "summary": "Irregular, working with OpenAI, reported GPT-6 Cyber solving every multi-stage scenario and atomic challenge at least once while breaching no hardened target on FrontierCyber, the most severe item at medium. METR published an assessment of AI R&D acceleration at Anthropic, about 1.9x on benchmarks, and a review of Anthropic's August Risk Report. Epoch AI moved its Capabilities Index to a Bayesian model. No critical or high item was found, but advisory and incident coverage was weak.",
- "sources_note": "Read: Irregular publications index (newest 5 November) and its GPT-6 Cyber post; two METR posts of 5 November found by search (the acceleration assessment read for its first 100,000 of about 130,000 characters; METR's blog index not opened); Epoch AI feed (newest 4 November) and posts; UK AISI blog (26 October); Apollo science index (15 October); The Record feed (newest 4 November; five stories that day, read only from the feed, none described as involving an AI model or agent); two GitHub advisory pages (GHSA-gr75-jv2w-4656, June, and GHSA-pjwx-r37v-7724, May, both out of window); Pillar research index (undated posts, so none could be placed in the window); OpenAI malicious-use page (newest shown February 2025) and one Google threat-intelligence post (February 2026), both stale. Could not read: any AI Incident Database record above 1797 (listing pages showed no records, cite/1798 returned only site chrome, so aiid_checked_to stays 1797); in-window GitHub advisories (searches returned none; a mirror fetch was denied), so advisory coverage is weak. Unit 42 tag page loaded with no post list; Embrace The Red returned only an old archive page. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Wiz, Trail of Bits, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Invariant, Anthropic threat reports, BleepingComputer, CISA, Reuters, Wired, Transluce, CAISI, Palisade, FAR.AI, Dreadnode, model launches and system cards, Redwood, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, Vals AI, AIUC, Goodfire, Scale AI, EU AI Office, Future of Life Institute, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures. No GPT-6 Cyber system card was found. Not checked: Nightingale Collective, Cisco Foundation AI, Japan, Korea and Singapore AISIs.",
+ "summary": "Irregular, working with OpenAI, reported GPT-6 Cyber solving every multi-stage scenario and atomic challenge at least once while breaching no hardened target on FrontierCyber, the most severe item at medium. METR published an assessment of AI R&D acceleration at Anthropic, about 1.9x on benchmarks, and a review of Anthropic's August Risk Report. No critical or high item was found, but advisory and incident coverage was weak.",
+ "sources_note": "Read: Irregular publications index (newest 5 November) and its GPT-6 Cyber post; two METR posts of 5 November found by search (the acceleration assessment read for its first 100,000 of about 130,000 characters; METR's blog index not opened); Epoch AI feed (newest 4 November) and posts (a 4 November post on a Bayesian Capabilities Index was left out because the independent check could not reopen it); UK AISI blog (26 October); Apollo science index (15 October); The Record feed (newest 4 November; five stories that day, read only from the feed, none described as involving an AI model or agent); two GitHub advisory pages (GHSA-gr75-jv2w-4656, June, and GHSA-pjwx-r37v-7724, May, both out of window); Pillar research index (undated posts, so none could be placed in the window); OpenAI malicious-use page (newest shown February 2025) and one Google threat-intelligence post (February 2026), both stale. Could not read: any AI Incident Database record above 1797 (listing pages showed no records, cite/1798 returned only site chrome, so aiid_checked_to stays 1797); in-window GitHub advisories (searches returned none; a mirror fetch was denied), so advisory coverage is weak. Unit 42 tag page loaded with no post list; Embrace The Red returned only an old archive page. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Wiz, Trail of Bits, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Invariant, Anthropic threat reports, BleepingComputer, CISA, Reuters, Wired, Transluce, CAISI, Palisade, FAR.AI, Dreadnode, model launches and system cards, Redwood, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, Vals AI, AIUC, Goodfire, Scale AI, EU AI Office, Future of Life Institute, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures. No GPT-6 Cyber system card was found. Not checked: Nightingale Collective, Cisco Foundation AI, Japan, Korea and Singapore AISIs.",
  "backfill": false,
  "aiid_checked_to": 1797,
  "items": [
@@ -69,25 +69,6 @@
    "status": "",
    "url": "https://metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review/",
    "source_name": "METR",
-   "aiid": null,
-   "note": ""
-  },
-  {
-   "date": "2026-11-04",
-   "track": "evaluator",
-   "severity": "info",
-   "title": "Epoch AI moves its Capabilities Index to a Bayesian model",
-   "summary": "Epoch replaced the least-squares and bootstrap fitting of the Epoch Capabilities Index with a Bayesian model giving credible intervals and direct probability comparisons between models, with per-benchmark noise levels. Across 252 models, Epoch reports new intervals about 13% narrower for models at or above ECI 125, out-of-sample 90% interval coverage of 89.6% versus 84.2% before, and slightly steeper frontier trends.",
-   "publisher": "Epoch AI",
-   "vendors": [],
-   "products": "Epoch Capabilities Index (ECI)",
-   "technique": "other",
-   "cve": "",
-   "ghsa": "",
-   "cvss": null,
-   "status": "",
-   "url": "https://epoch.ai/publications/eci-bayesian-methodology",
-   "source_name": "Epoch AI",
    "aiid": null,
    "note": ""
   }
