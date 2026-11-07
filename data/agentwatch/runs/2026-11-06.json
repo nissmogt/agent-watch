@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-06",
+ "run_at": "2026-11-06T17:49:57-08:00",
+ "window_from": "2026-11-05",
+ "window_to": "2026-11-06",
+ "title": "Quiet day",
+ "summary": "No new item was verified for 5 to 6 November. The only in-window posts found (Irregular's GPT-6 Cyber assessment and METR's two 5 November posts on Anthropic) were already published in the previous run. Advisory and incident coverage was weak.",
+ "sources_note": "Read: METR blog index (newest 5 November, already published) and its Risk Report review post; Irregular publications index (newest 5 November, the GPT-6 Cyber post already published; the post itself could not be reopened); Apollo blog (1 October) and science page (15 October); UK AISI blog (26 October); Epoch AI latest (a 6 November compute estimate, left out as outside the tracks); Transluce news (11 October); Palisade blog (20 October); FAR.AI blog (22 September); Redwood Research archive (newest 4 November, before the window); NIST CAISI page (16 October); AI Incident Database May-July roundup (records to 1618) and incident list (showed only a loading placeholder); three mirrored advisory records for litellm and Context7, all published before the window. Could not read: any github.com/advisories page (searches returned none, and the term sweep covered only a few terms); any AI Incident Database record above 1797, so aiid_checked_to stays 1797. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Anthropic, OpenAI and Google threat reports, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer, Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, Japan, Korea and Singapore AISIs, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, EU AI Office, Future of Life Institute, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures; none showed an in-window result.",
+ "backfill": false,
+ "aiid_checked_to": 1797,
+ "items": []
+}
