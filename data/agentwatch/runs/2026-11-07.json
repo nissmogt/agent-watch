@@ -1,0 +1,74 @@
+{
+ "date": "2026-11-07",
+ "run_at": "2026-11-07T18:05:00-08:00",
+ "window_from": "2026-11-05",
+ "window_to": "2026-11-07",
+ "title": "Frontier Model Forum drafts a rating scheme for cyber jailbreaks",
+ "summary": "The Frontier Model Forum published a draft framework that scores cyber-related jailbreaks on four dimensions into bands from Negligible to Critical, open for comment until 21 December. SecureBio and RAND reanalysed the 2025 wet-lab novice uplift trial and argue its null result should not be read as definitive, and Vals AI reported on profanity in Inkling 2 Small reasoning traces. All three items are info; no critical, high or medium item was found, and advisory and incident coverage was weak.",
+ "sources_note": "Read: Frontier Model Forum publications index (newest 5 November) and its jailbreak rating specification; SecureBio blog (newest 6 November); Vals AI news (newest 6 November); Epoch AI latest and data-insights (newest 6 November; a 6 November Huawei data-center compute report was left out as outside the evaluator track); METR blog (newest 5 November, both posts already published); Irregular research and news (newest 5 November, already published); UK AISI blog (26 October); Palisade (20 October); Apollo (15 October and 1 October); Scale Labs (29 October); MLCommons (29 October); NIST CAISI news (16 October); AVERI (9 October); FAR.AI blog (22 September); Transluce (23 September); AIUC updates (23 September); Dreadnode home (3 August); Future of Life Institute feed (newest 5 November, a political statement not included); one GitHub advisory list page (CWE filter, newest 25 August). Could not read: any GitHub advisory dated in the window (searches returned only mirrors and older material; a Langflow mirror page was blocked), so advisory coverage is weak; any AI Incident Database record above 1797 (searches returned no newer record pages and history pages showed only site chrome, so aiid_checked_to stays 1797); Redwood's Substack index (needs JavaScript); the FMF companion news post. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Tenable, Check Point, Talos, Koi, Legit, Anthropic, OpenAI and Google threat reports, Reuters, Wired, The Record, BleepingComputer, Cisco Foundation AI, Vals AI cyber, model launches and system cards, Haize, Lakera, Promptfoo, Patronus, Mindgard, Lasso, Goodfire, Gray Swan, SaferAI, EU AI Office, OECD, Partnership on AI, AI Evaluator Forum, state legislatures. Not checked: Pillar, Invariant Labs, Japan, Korea and Singapore AISIs, Nightingale Collective, CISA.",
+ "backfill": false,
+ "aiid_checked_to": 1797,
+ "items": [
+  {
+   "date": "2026-11-05",
+   "track": "evaluator",
+   "severity": "info",
+   "title": "Frontier Model Forum posts draft rating framework for cyber jailbreaks",
+   "summary": "The Frontier Model Forum published version 1.0 of a preliminary scheme for rating jailbreaks that unlock cyber-related content. Four dimensions (capability gain, scope, ease of deployment, ease of discovery) are each scored 0 to 3 and combined into a band from Negligible to Critical. FMF says it is not yet ready for operational use, and public feedback is open until 21 December 2026.",
+   "publisher": "Frontier Model Forum",
+   "vendors": [],
+   "products": "FMF Jailbreak Rating Framework for Frontier Cyber Threats v1.0",
+   "technique": "jailbreak",
+   "cve": "",
+   "ghsa": "",
+   "cvss": null,
+   "status": "",
+   "url": "https://www.frontiermodelforum.org/specifications/jailbreak-rating-framework-for-frontier-cyber-threats/",
+   "source_name": "Frontier Model Forum",
+   "aiid": null,
+   "note": "Companion news post exists but could not be opened (provenance block); specification page read in full."
+  },
+  {
+   "date": "2026-11-06",
+   "track": "evaluator",
+   "severity": "info",
+   "title": "SecureBio and RAND reanalysis questions the 2025 wet-lab novice uplift null result",
+   "summary": "SecureBio and RAND authors re-coded lab notebooks from the 2025 Active Site trial (153 novices, LLM arm versus internet-only), which found no significant difference. They report only 29 of 60 participants requesting materials could have succeeded, not 56 as assumed. Replaying the conversations with GPT-5.6 Sol raised fragment accuracy from 33% to 92%. They conclude the study is not definitive negative evidence about current models.",
+   "publisher": "SecureBio",
+   "vendors": [
+    "OpenAI"
+   ],
+   "products": "Active Site 2025 wet-lab uplift study reanalysis; GPT-5.6 Sol replay",
+   "technique": "misuse",
+   "cve": "",
+   "ghsa": "",
+   "cvss": null,
+   "status": "",
+   "url": "https://securebio.org/blog/2025-wet-lab-uplift-reanalysis/index.html",
+   "source_name": "SecureBio",
+   "aiid": null,
+   "note": "Authors describe the 41% hands-on success figure as a rough upper-bound approximation with many confounders."
+  },
+  {
+   "date": "2026-11-06",
+   "track": "evaluator",
+   "severity": "info",
+   "title": "Vals AI finds Inkling 2 Small rarely swears in its reasoning, mostly late in failing runs",
+   "summary": "Vals AI read the reasoning traces of Thinking Machines' Inkling 2 Small across 2,655 agent runs on 13 benchmarks. A profanity appeared in 50 runs, with two runaway runs accounting for 241 of 316 occurrences, and no run shorter than 100 steps swore. Of 48 graded swearing runs, 46 failed, but about 75% of all graded runs failed, so swearing is not a failure predictor.",
+   "publisher": "Vals AI",
+   "vendors": [
+    "Thinking Machines"
+   ],
+   "products": "Inkling 2 Small",
+   "technique": "other",
+   "cve": "",
+   "ghsa": "",
+   "cvss": null,
+   "status": "",
+   "url": "https://www.vals.ai/blogs/inkling-2-small-swears",
+   "source_name": "Vals AI",
+   "aiid": null,
+   "note": "Lightweight behavioral observation of reasoning traces."
+  }
+ ]
+}

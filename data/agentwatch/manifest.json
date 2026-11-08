@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-05",
- "run_at": "2026-11-05T17:46:27-08:00",
- "items": 305,
+ "updated": "2026-11-07",
+ "run_at": "2026-11-07T18:05:00-08:00",
+ "items": 308,
  "runs": [
+  {
+   "date": "2026-11-07",
+   "run_at": "2026-11-07T18:05:00-08:00",
+   "window_from": "2026-11-05",
+   "window_to": "2026-11-07",
+   "title": "Frontier Model Forum drafts a rating scheme for cyber jailbreaks",
+   "summary": "The Frontier Model Forum published a draft framework that scores cyber-related jailbreaks on four dimensions into bands from Negligible to Critical, open for comment until 21 December. SecureBio and RAND reanalysed the 2025 wet-lab novice uplift trial and argue its null result should not be read as definitive, and Vals AI reported on profanity in Inkling 2 Small reasoning traces. All three items are info; no critical, high or medium item was found, and advisory and incident coverage was weak.",
+   "sources_note": "Read: Frontier Model Forum publications index (newest 5 November) and its jailbreak rating specification; SecureBio blog (newest 6 November); Vals AI news (newest 6 November); Epoch AI latest and data-insights (newest 6 November; a 6 November Huawei data-center compute report was left out as outside the evaluator track); METR blog (newest 5 November, both posts already published); Irregular research and news (newest 5 November, already published); UK AISI blog (26 October); Palisade (20 October); Apollo (15 October and 1 October); Scale Labs (29 October); MLCommons (29 October); NIST CAISI news (16 October); AVERI (9 October); FAR.AI blog (22 September); Transluce (23 September); AIUC updates (23 September); Dreadnode home (3 August); Future of Life Institute feed (newest 5 November, a political statement not included); one GitHub advisory list page (CWE filter, newest 25 August). Could not read: any GitHub advisory dated in the window (searches returned only mirrors and older material; a Langflow mirror page was blocked), so advisory coverage is weak; any AI Incident Database record above 1797 (searches returned no newer record pages and history pages showed only site chrome, so aiid_checked_to stays 1797); Redwood's Substack index (needs JavaScript); the FMF companion news post. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Tenable, Check Point, Talos, Koi, Legit, Anthropic, OpenAI and Google threat reports, Reuters, Wired, The Record, BleepingComputer, Cisco Foundation AI, Vals AI cyber, model launches and system cards, Haize, Lakera, Promptfoo, Patronus, Mindgard, Lasso, Goodfire, Gray Swan, SaferAI, EU AI Office, OECD, Partnership on AI, AI Evaluator Forum, state legislatures. Not checked: Pillar, Invariant Labs, Japan, Korea and Singapore AISIs, Nightingale Collective, CISA.",
+   "backfill": false,
+   "count": 3,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 3
+   }
+  },
   {
    "date": "2026-11-05",
    "run_at": "2026-11-05T17:46:27-08:00",
