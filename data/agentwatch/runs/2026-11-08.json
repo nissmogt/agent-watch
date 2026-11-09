@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-08",
+ "run_at": "2026-11-08T17:45:29-08:00",
+ "window_from": "2026-11-07",
+ "window_to": "2026-11-08",
+ "title": "Quiet day",
+ "summary": "No new item was found for 7 or 8 November, a weekend. The evaluator and capability indexes that could be read showed nothing newer than 6 November, and advisory and incident coverage was weak.",
+ "sources_note": "Read: METR blog (newest 5 November) and research index (26 August); UK AISI blog (26 October); Apollo science index (15 October); Epoch AI latest (newest 6 November, outside the window); FAR.AI blog (22 September); Redwood Research archive (4 November); Palisade blog (20 October); Irregular publications (5 November, already published); NIST CAISI GLM-5.3 assessment page (September; the CAISI news listing itself was not read). Could not read: any github.com advisory page dated in the window (searches across the AI term list returned only older advisories, osv.dev, Snyk and GitHub mirror sites; one stale mirror list dated 8 April was opened and not used), so advisory coverage is weak; any AI Incident Database record above 1797 (searches returned only older records and the history page showed only a loading placeholder, so aiid_checked_to stays 1797); any researcher or vendor disclosure page from the window (combined searches for Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant Labs, Mindgard, Lasso, Talos, Check Point, Tenable, Legit and Koi returned nothing in the window). Searched without opening a primary page: Transluce, Future of Life Institute, Dreadnode, Vals AI, Scale AI, Cisco Foundation AI, model launches and system cards, Anthropic, OpenAI and Google threat reports, and general agent-incident news. Not checked: SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, EU AI Office, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures, Japan, Korea and Singapore AISIs, Nightingale Collective, CISA, Reuters, Wired, The Record and BleepingComputer pages directly.",
+ "backfill": false,
+ "aiid_checked_to": 1797,
+ "items": []
+}
