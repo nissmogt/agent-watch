@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-04",
- "run_at": "2026-11-04T17:46:47-08:00",
+ "updated": "2026-11-09",
+ "run_at": "2026-11-09T17:50:21-08:00",
  "items": 302,
  "runs": [
+  {
+   "date": "2026-11-09",
+   "run_at": "2026-11-09T17:50:21-08:00",
+   "window_from": "2026-11-08",
+   "window_to": "2026-11-09",
+   "title": "Quiet day",
+   "summary": "No new item was found for 8 or 9 November. The capability and evaluator indexes that could be read showed nothing newer than 6 November, and advisory, incident and vendor-disclosure coverage was weak.",
+   "sources_note": "Read: UK AISI blog (newest 26 October); METR blog (newest 5 November, outside the window); Apollo Research blog (1 October); Palisade Research blog (20 October); Irregular home page listing its research (newest 5 November, outside the window); Epoch AI latest, math-filtered view (newest 6 November); one GitHub advisories list page filtered to CWE-29 (newest 25 August, not used); two news articles surfaced by search on agent prompt injection (The Next Web, 15 April; Decrypt, 12 June; both outside the window). Could not read: any github.com advisory page dated in the window (searches across langchain, litellm, mcp, ollama, vllm, mlflow, langflow, open-webui, n8n, comfyui and gradio returned only older advisories and mirror sites such as osv.dev, Tenable and gcve), so advisory coverage is weak; any AI Incident Database record above 1797 (searches returned only older records and the history and summaries pages showed only a loading placeholder, so aiid_checked_to stays 1797); the NIST CAISI research index (provenance block). Searched without opening a primary page: Unit 42, Zenity, Embrace The Red and Noma (one combined query), Anthropic, OpenAI and Google threat reports, Reuters, Wired, The Record and BleepingComputer, Epoch AI, Scale AI, Vals AI, Dreadnode, FAR.AI, EU AI Office, model launches and system cards, and red-teaming funding news. Not checked: HiddenLayer, Wiz, Trail of Bits, Pillar, Invariant Labs, Mindgard, Lasso, Cisco Talos, Check Point, Tenable research, Legit Security, Koi, Redwood, Transluce, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, Future of Life Institute, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures, Japan, Korea and Singapore AISIs, Cisco Foundation AI, Nightingale Collective and CISA.",
+   "backfill": false,
+   "count": 0,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-11-04",
    "run_at": "2026-11-04T17:46:47-08:00",
