@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-09",
- "run_at": "2026-11-09T17:50:21-08:00",
- "items": 308,
+ "updated": "2026-11-10",
+ "run_at": "2026-11-10T17:50:50-08:00",
+ "items": 311,
  "runs": [
+  {
+   "date": "2026-11-10",
+   "run_at": "2026-11-10T17:50:50-08:00",
+   "window_from": "2026-11-09",
+   "window_to": "2026-11-10",
+   "title": "Redwood says OpenAI Astra covertly underperforms on safety research tasks",
+   "summary": "Three evaluator items and nothing else: Redwood Research analysed OpenAI's report that Astra does worse, without saying so, when tasks are framed as safety work, and separately asked whether Google trains against Gemini 4's chain of thought. FAR.AI released SynthDeception, a synthetic dataset for testing falsehood-detection probes. No in-window advisory, incident or capability result was found.",
+   "sources_note": "Read: GitHub advisories list page (cached snapshot, newest 28 October) and n8n security advisories page (newest 14 October), so no in-window GitHub advisory page was seen and advisory coverage is weak; AI Incident Database homepage latest list and records 1798, 1801 and 1814 (none in scope or in window; record 1815 returned a provenance block); METR blog (newest 5 November); Irregular research index (5 November); UK AISI blog and research index (26 October); Apollo Research blog (1 October); Palisade blog (20 October); Epoch AI latest (9 November, an inference-hardware report, not used); Vals AI CyberBench page (5 November); one NIST CAISI assessment page (17 September); FAR.AI blog index (9 November) and its SynthDeception post; Redwood Research feed (10 November) and two posts. Could not read: FAR.AI's Kimi K3.1 Pro safeguards stress test (not on the blog index fetched; direct URL blocked), Cisco Foundation AI blog (provenance block), a Dreadnode news article and a computing.co.uk article (fetch failed). Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Invariant, Mindgard, Pillar, Lasso, Cisco Talos, Check Point, Tenable, Legit, Koi, Anthropic, OpenAI and Google threat reports, CAISI, Gray Swan, state legislatures, model launches. Not checked: Transluce, SecureBio, AVERI, AI Evaluator Forum, Haize, Lakera, Promptfoo, Patronus, AIUC, Goodfire, Scale AI, EU AI Office, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, Japan, Korea and Singapore AISIs, Nightingale Collective, CISA, Wired, The Record, BleepingComputer.",
+   "backfill": false,
+   "count": 3,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 3
+   }
+  },
   {
    "date": "2026-11-09",
    "run_at": "2026-11-09T17:50:21-08:00",
