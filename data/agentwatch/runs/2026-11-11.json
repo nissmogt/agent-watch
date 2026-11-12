@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-11",
+ "run_at": "2026-11-11T17:45:07-08:00",
+ "window_from": "2026-11-10",
+ "window_to": "2026-11-11",
+ "title": "Quiet day",
+ "summary": "No new item was found for 10 or 11 November. Every capability and evaluator index that could be read showed nothing newer than 9 November, and no AI Incident Database record above 1814 was found.",
+ "sources_note": "Read: AI Incident Database homepage latest list (newest records 1812 and 1814, dated 7 and 8 November) and record 1814 (8 November, out of scope); n8n GitHub security advisories list (newest 14 October); GitLab advisory listing for litellm (no in-window entry) and the GitLab page for GHSA-jm63-cq47-j5jp (already published); Pillar Security research index (posts undated, not used); METR blog (newest 5 November); Irregular research index (5 November); UK AISI blog (26 October); Apollo Research homepage and science index (newest dated 15 October); Epoch AI blog (9 November) and data insights (4 November); Vals AI CyberBench page (5 November); NIST CAISI GLM-5.3 page (17 September); FAR.AI blog (9 November), including the Kimi K3.1 Pro safeguards stress test, which opened this time but was published 9 November, before this window, so it is not added. Could not read: no github.com/advisories GHSA page or Advisory Database list page came back from any search, so GitHub Advisory Database coverage is missing for this window; no AIID record above 1814 could be found. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Invariant, Mindgard, Lasso, Cisco Talos, Check Point, Tenable, Legit, Koi, Anthropic, OpenAI and Google threat reports, US CAISI, Palisade, Dreadnode, Cisco Foundation AI, Scale AI, Japan, Korea and Singapore AISIs, Transluce, Goodfire, Gray Swan, Vals AI and Promptfoo funding news, model launches. Not checked: Redwood (covered 10 November), Haize, Lakera, Patronus, SecureBio, AVERI, AI Evaluator Forum, AIUC, EU AI Office, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer.",
+ "backfill": false,
+ "aiid_checked_to": 1814,
+ "items": []
+}
