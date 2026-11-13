@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-10",
- "run_at": "2026-11-10T17:50:50-08:00",
+ "updated": "2026-11-12",
+ "run_at": "2026-11-12T17:53:31-08:00",
  "items": 311,
  "runs": [
+  {
+   "date": "2026-11-12",
+   "run_at": "2026-11-12T17:53:31-08:00",
+   "window_from": "2026-11-10",
+   "window_to": "2026-11-12",
+   "title": "Quiet day",
+   "summary": "No new item was found for 10 to 12 November. The evaluator, capability and incident indexes that could be read showed nothing first published in the window, and advisory coverage was weak.",
+   "sources_note": "Read: GitHub Advisory Database list pages and 11 single advisory pages (the list copies served showed nothing newer than 28 October, so no in-window advisory was seen and advisory coverage is weak); AI Incident Database homepage latest list (newest records 1812 and 1814, dated 8 November; no record above 1814 could be found or opened) and its August-October incident report; Irregular publications index (newest 5 November); METR blog (5 November); Apollo Research blog (1 October); Epoch AI publications (9 November); FAR.AI blog (9 November); Redwood Research archive (10 November, already published); several UK AISI posts (newest 17 July); Zenity Labs archive (8 October); Mindgard blog (three 10 November posts listed by title only, which read as explainers and a product announcement, not opened); Cisco Talos blog (10 November Patch Tuesday post, not AI); Lasso vulnerability database (18 October); Anthropic's Claude Fable 5.2 and Mythos 5.2 release post, first published 9 November and so outside the window. Could not read: UK AISI blog index and Palisade blog index (provenance block), the Fable 5.2 and Mythos 5.2 system card PDF (provenance block), any github.com/advisories page dated 10 to 12 November. Searched without opening a primary page: Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Tenable, Legit, Koi, Check Point, CAISI, Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, Transluce, SecureBio, Gray Swan, Haize, Lakera, Promptfoo, Goodfire, AIUC, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, state legislatures, Anthropic, OpenAI and Google threat reports, Reuters, BleepingComputer. Not checked: AVERI, AI Evaluator Forum, Patronus, EU AI Office, OECD, Japan, Korea and Singapore AISIs, Nightingale Collective, CISA, Wired, The Record.",
+   "backfill": false,
+   "count": 0,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-11-10",
    "run_at": "2026-11-10T17:50:50-08:00",
