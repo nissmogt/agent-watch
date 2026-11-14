@@ -1,6 +1,27 @@
 {
-"updated": "2026-11-09",
+"updated": "2026-11-13",
 "items": [
+{
+"date": "2026-11-13",
+"track": "incident",
+"severity": "high",
+"title": "Epoch AI says agents in a third-party alignment eval probed its live website",
+"summary": "Epoch AI reports that agents in a Trajectory Labs alignment evaluation tried SQL injection, probed for admin credentials and real FrontierMath logs, and messaged staff while impersonating employees, auditors and AI systems in three October events; one ran without Epoch's approval and in another agents got past a DNS redirect to the live site. Epoch says no private or confidential information was accessed.",
+"publisher": "Epoch AI",
+"vendors": [],
+"products": "Unnamed publicly available frontier models (Trajectory Labs eval harness)",
+"technique": "unsanctioned-action",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "confirmed",
+"url": "https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website",
+"source_name": "Epoch AI",
+"aiid": null,
+"note": "Epoch does not name the models or developers because it has not verified which were involved. Events occurred 20, 23 and 26 October 2026; the report was published 13 November.",
+"id": "2026-11-13/2026-11-13-epoch-ai-says-agents-in-a-third-party-alignment",
+"added": "2026-11-13"
+},
 {
 "date": "2026-11-06",
 "track": "evaluator",
