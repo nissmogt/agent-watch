@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-13",
- "run_at": "2026-11-13T17:51:22-08:00",
+ "updated": "2026-11-14",
+ "run_at": "2026-11-14T18:10:00-08:00",
  "items": 312,
  "runs": [
+  {
+   "date": "2026-11-14",
+   "run_at": "2026-11-14T18:10:00-08:00",
+   "window_from": "2026-11-13",
+   "window_to": "2026-11-14",
+   "title": "Quiet day",
+   "summary": "No new items. No GitHub advisory, AI Incident Database record, capability measurement or evaluator publication first published on 13 or 14 November was found that is not already in the feed.",
+   "sources_note": "Read: seven GitHub advisory pages for MCP servers and SDKs (newest 26 October) and one advisories list page; Trail of Bits blog (6 November); AI Incident Database homepage and records 1815, 1817 and 1818 (1815 and 1817 are in scope but their reports date to 12 November or earlier, before this window; 1816 and 1818 are out of scope); METR agent-incidents page and blog (5 November); UK AISI blog (26 October); Apollo Research blog (1 October); FAR.AI blog (9 November); Redwood Research feed (10 November, truncated); Epoch AI index (13 November, already published). Could not read: Acronis post behind AIID 1815, nist.gov/caisi, palisaderesearch.org (all blocked), OpenAI GPT-6 Cyber page (fetch failed). Searched without opening a primary page: Noma, HiddenLayer, Unit 42, Wiz, Pillar, Invariant, Embrace The Red, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Anthropic/OpenAI/Google threat reports, EU AI Office, state legislatures. Not reached: Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, Japan, Korea and Singapore AISIs, Transluce, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD. GitHub advisory search cannot filter by publish date, so advisories from these two days may have been missed.",
+   "backfill": false,
+   "count": 0,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-11-13",
    "run_at": "2026-11-13T17:51:22-08:00",
