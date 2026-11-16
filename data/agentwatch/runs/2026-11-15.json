@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-15",
+ "run_at": "2026-11-15T17:50:07-08:00",
+ "window_from": "2026-11-14",
+ "window_to": "2026-11-15",
+ "title": "Quiet day",
+ "summary": "No new items. No GitHub advisory, AI Incident Database record, capability measurement or evaluator publication first published on 14 or 15 November was found that is not already in the feed.",
+ "sources_note": "Read: UK AISI blog index (newest 26 October); METR research index (newest 26 August); Apollo Research blog (1 October); Redwood Research blog archive (10 November); Epoch AI blog (13 November, already published); FAR.AI blog (9 November); one Irregular post (December 2025); AI Incident Database research page and its AI-agent-systems entity page (highest record listed 1810); Acronis post on BOSSAI (4 November, before the window). Could not read: AI Incident Database record 1819 (fetch refused), so no record above 1818 was opened. No GitHub advisory page was read: advisory searches returned only mirrors (GitLab, osv.dev, corgea, gcve), none showing an AI-product advisory from these two days, so GitHub advisories from 14-15 November may have been missed. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Embrace The Red, Unit 42, Transluce, Palisade, Gray Swan, NIST CAISI, EU AI Office, Future of Life Institute, Anthropic/OpenAI/Google threat reports, model launches and system cards. Not reached: Wiz, Trail of Bits, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, Japan, Korea and Singapore AISIs, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer, SecureBio, AVERI, AI Evaluator Forum, Haize, Lakera, Promptfoo, Patronus, AIUC, Goodfire, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures.",
+ "backfill": false,
+ "aiid_checked_to": 1818,
+ "items": []
+}
