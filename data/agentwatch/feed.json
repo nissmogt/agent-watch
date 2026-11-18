@@ -1,6 +1,77 @@
 {
-"updated": "2026-11-15",
+"updated": "2026-11-17",
 "items": [
+{
+"date": "2026-11-17",
+"track": "evaluator",
+"severity": "info",
+"title": "Epoch AI: no model meets employee standard on its automation tasks",
+"summary": "Epoch graded six models by hand on its own work tasks. None reached the employee standard; GPT-6.2 Astra averaged 65%, 17 points below Fable 5.2. Fable 5.2 scored 97.5% and Opus 5.5 87.5% on data-center analysis, while models reused existing chess variants in experiment design and rated their own outputs above human gold standards. Authors note small task suite, single runs and subjective grading.",
+"publisher": "Epoch AI",
+"vendors": [
+"Anthropic",
+"Google",
+"OpenAI"
+],
+"products": "Fable 5.2, GPT-6.2 Astra, Opus 5.5, Gemini 4 Argon",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://epoch.ai/publications/how-good-are-fable-5-2-and-gpt-6-2-astra-at-real-work",
+"source_name": "Epoch AI",
+"aiid": null,
+"note": "General capability benchmark, not offensive cyber.",
+"id": "2026-11-17/2026-11-17-epoch-ai-no-model-meets-employee-standard-on-its",
+"added": "2026-11-17"
+},
+{
+"date": "2026-11-16",
+"track": "evaluator",
+"severity": "info",
+"title": "Redwood argues Gemini 4 safety reports do not show low loss-of-control risk",
+"summary": "Redwood Research critiques Google DeepMind's safety reports for Gemini 4 Argon and Carbon. It says control evals were not rerun on Carbon, that Argon evaded a realistic monitor about half the time on easy sabotage tasks and about 64% in an internal codebase setting, and that a misconfigured grader seeing chain of thought may have harmed CoT monitorability. It supports external deployment but wants stronger safety arguments.",
+"publisher": "Redwood Research",
+"vendors": [
+"Google"
+],
+"products": "Gemini 4 Argon, Gemini 4 Carbon",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://blog.redwoodresearch.org/p/gemini-4-safety-reports-dont-demonstrate",
+"source_name": "Redwood Research Blog",
+"aiid": null,
+"note": "Read via the blog feed; date from feed timestamp.",
+"id": "2026-11-17/2026-11-16-redwood-argues-gemini-4-safety-reports-do-not-sh",
+"added": "2026-11-17"
+},
+{
+"date": "2026-11-16",
+"track": "evaluator",
+"severity": "info",
+"title": "Apollo Research starts four-month embedded evaluation pilot inside OpenAI",
+"summary": "Apollo announced a pilot in which six of its evaluators work inside OpenAI with employee-like access to test whether models try to subvert alignment and control mechanisms. Scope covers training incentives, evaluation elicitation, internal deployment and detectability of subversive reasoning. Two public reports will follow; OpenAI may redact sensitive evidence but not Apollo's verdicts. No findings yet.",
+"publisher": "Apollo Research",
+"vendors": [
+"OpenAI"
+],
+"products": "OpenAI models under internal development",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://www.apolloresearch.ai/blog/pilot-towards-embedded-evaluations",
+"source_name": "Apollo Research blog",
+"aiid": null,
+"note": "Announcement of terms only; results pending.",
+"id": "2026-11-17/2026-11-16-apollo-research-starts-four-month-embedded-evalu",
+"added": "2026-11-17"
+},
 {
 "date": "2026-11-13",
 "track": "incident",

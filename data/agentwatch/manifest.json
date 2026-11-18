@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-15",
- "run_at": "2026-11-15T17:50:07-08:00",
- "items": 312,
+ "updated": "2026-11-17",
+ "run_at": "2026-11-17T17:49:34-08:00",
+ "items": 315,
  "runs": [
+  {
+   "date": "2026-11-17",
+   "run_at": "2026-11-17T17:49:34-08:00",
+   "window_from": "2026-11-16",
+   "window_to": "2026-11-17",
+   "title": "Apollo Research begins embedded evaluation pilot inside OpenAI",
+   "summary": "Three info-level evaluator items and nothing above info. Apollo Research announced a four-month pilot placing six evaluators inside OpenAI; Redwood Research argued Google's Gemini 4 safety reports do not show low loss-of-control risk; Epoch AI reported that no model met its employee standard on hand-graded work tasks.",
+   "sources_note": "Read: Apollo Research blog index and its 16 November post; Redwood Research feed and its 16 November post; Epoch AI blog index and its 17 November report; METR blog and risk-assessment indexes (newest 5 November); UK AISI blog index (newest 26 October); Irregular research index (newest 5 November); FAR.AI blog (newest 9 November); Vals AI cyber-offense benchmark page (updated 11 November); one CAISI assessment page (17 September); one GitHub advisory list page (stale cache, newest 3 September); AI Incident Database records 1774 and 1775. Could not read: AI Incident Database record 1819 (fetch refused), so no record above 1818 was opened and aiid_checked_to stays 1818; NIST CAISI index (fetch refused); Goodfire blog (redirect not followed). No individual GitHub advisory page was opened because searches returned none dated 16-17 November, so advisories from these days may have been missed. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Palisade, Dreadnode, Scale AI, Transluce, Frontier Model Forum, MLCommons, SaferAI, Haize, Gray Swan, state legislatures, model launches and system cards. Not reached: Anthropic/OpenAI/Google threat reports, Nightingale Collective, CISA, Reuters, Wired, The Record, Japan, Korea and Singapore AISIs, Cisco Foundation AI, SecureBio, AVERI, AI Evaluator Forum, Lakera, Promptfoo, Patronus, AIUC, EU AI Office, FLI, Partnership on AI, OECD.",
+   "backfill": false,
+   "count": 3,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 3
+   }
+  },
   {
    "date": "2026-11-15",
    "run_at": "2026-11-15T17:50:07-08:00",
