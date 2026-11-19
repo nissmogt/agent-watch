@@ -1,6 +1,27 @@
 {
-"updated": "2026-11-17",
+"updated": "2026-11-18",
 "items": [
+{
+"date": "2026-11-17",
+"track": "evaluator",
+"severity": "info",
+"title": "Redwood proposes a definition of \"capabilities activities\" to support pacing the frontier",
+"summary": "Redwood Research authors propose a standard definition of capabilities work so compute spent advancing capabilities could be limited by law or voluntary commitment. All lab compute counts as capabilities work by default, with exemptions for idle compute, narrow products, customer serving and a limited list of narrow safety activities. They favor false positives and urge developers to let third-party auditors measure and publicly report the split.",
+"publisher": "Redwood Research",
+"vendors": [],
+"products": "",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://blog.redwoodresearch.org/p/how-should-we-define-capabilities",
+"source_name": "Redwood Research blog",
+"aiid": null,
+"note": "Date taken from the post page; it was the newest entry on the Redwood blog archive.",
+"id": "2026-11-18/2026-11-17-redwood-proposes-a-definition-of-capabilities-ac",
+"added": "2026-11-18"
+},
 {
 "date": "2026-11-17",
 "track": "evaluator",
