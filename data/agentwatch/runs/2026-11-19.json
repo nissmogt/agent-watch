@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-19",
+ "run_at": "2026-11-19T17:50:11-08:00",
+ "window_from": "2026-11-18",
+ "window_to": "2026-11-19",
+ "title": "Quiet day",
+ "summary": "No new AI-security vulnerability, incident, capability or evaluator item was found for 18-19 November. Two Epoch AI data insights on compute growth from 18 November were judged off-scope, as in the previous run.",
+ "sources_note": "Read: Epoch AI blog (newest 18 November; two compute-trend data insights judged off-scope); Irregular research index (newest 17 November, before the window); Apollo Research blog (newest 16 November); Scale Labs blog (newest 17 November); METR blog index (newest 5 November); FAR.AI blog (newest 9 November); Dreadnode research index (newest 2 November); Palisade Research index (newest 7 May); Vals AI cyber benchmark page (5 November); Frontier Model Forum publications (5 November); UK AISI blog index (newest 26 October); AI Incident Database home page (newest record 1832); one GitHub advisories list page (CWE filter, newest 25 August). Could not read: AI Incident Database record 1833 (fetch refused), so records above 1832 remain unchecked; Redwood Research blog (fetch refused); Cisco Foundation AI blog (no post list). No individual GitHub advisory page was opened because searches returned none, and searches for llama, openai, anthropic, claude, transformers, gradio, langgraph, llamaindex, copilot, crewai, autogen, comfyui, huggingface and n8n advisories were not run, so advisories from 18-19 November may have been missed. Searched without opening a primary page or not checked: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, CAISI, Japan/Korea/Singapore AISIs, FLI, state legislatures, Anthropic/OpenAI/Google threat reports, BleepingComputer, Transluce, CISA, Reuters, Wired, The Record, and most evaluator-track companies.",
+ "backfill": false,
+ "aiid_checked_to": 1832,
+ "items": []
+}
