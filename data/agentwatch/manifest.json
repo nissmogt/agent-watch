@@ -1,7 +1,7 @@
 {
  "updated": "2026-11-19",
  "run_at": "2026-11-19T17:50:11-08:00",
- "items": 315,
+ "items": 316,
  "runs": [
   {
    "date": "2026-11-19",
@@ -19,6 +19,24 @@
     "medium": 0,
     "low": 0,
     "info": 0
+   }
+  },
+  {
+   "date": "2026-11-18",
+   "run_at": "2026-11-18T17:49:55-08:00",
+   "window_from": "2026-11-17",
+   "window_to": "2026-11-18",
+   "title": "Redwood Research proposes a definition of capabilities work for compute pacing",
+   "summary": "One info-level evaluator item and nothing above info. Redwood Research proposed counting all lab compute as capabilities work by default, with narrow exemptions, so that limits and third-party audits could measure the split.",
+   "sources_note": "Read: Redwood Research blog archive and its 17 November post; Epoch AI blog (newest 18 November, two compute-trend data insights judged off-scope); Apollo Research blog (newest 16 November, already published); METR updates index (newest 5 November); UK AISI blog index (newest 26 October); FAR.AI blog (newest 9 November); Frontier Model Forum publications (5 November); FLI newsletter archive (5 November); Gray Swan blog (17 August); one CAISI assessment page (17 September); AI Incident Database home page (records 1828-1832, dated 15-16 November) and record pages 1828 and 1832; one GitHub-advisory mirror list page and one Corgea roundup (12 November). Dropped: AI Incident Database record 1828 (agents probing Epoch AI) because its first report predates the window. Could not read: AI Incident Database record 1833 (fetch refused), so records above 1832 are unchecked; records 1819-1827 and 1829-1831 were not opened individually (home-page summaries for 1829-1831 looked out of scope). No individual GitHub advisory page was opened because searches returned no github.com/advisories URLs, so advisories from 17-18 November may have been missed. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Palisade, Dreadnode, Irregular, Goodfire, EU AI Office, Anthropic/OpenAI/Google threat reports, BleepingComputer, The Record, model launches and system cards. Not reached: Transluce (only a Hugging Face page), Scale AI, Vals AI, Cisco Foundation AI, Japan, Korea and Singapore AISIs, SecureBio, AVERI, AI Evaluator Forum, Haize, Lakera, Promptfoo, Patronus, AIUC, SaferAI, MLCommons, Partnership on AI, OECD, state legislatures, Nightingale Collective, CISA, Reuters, Wired.",
+   "backfill": false,
+   "count": 1,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 1
    }
   },
   {
