@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-21",
+ "run_at": "2026-11-21T17:49:43-08:00",
+ "window_from": "2026-11-20",
+ "window_to": "2026-11-21",
+ "title": "Quiet day",
+ "summary": "No new AI vulnerability advisory, AI incident, offensive-capability measurement or evaluator item dated 20-21 November was found. The newest posts on the evaluator and capability indexes read this run predate the window.",
+ "sources_note": "Read: GitHub advisories list pages (withdrawn filter only, newest 8 September; no live list of recent advisories), a GitLab advisory mirror for @modelcontextprotocol/server (its MCP SDK advisories trace to October and are already published) and a Corgea write-up surfaced by search; AI Incident Database home page (newest record 1834, 18 November, already checked); Irregular publications (17 November); UK AISI blog (26 October); Epoch AI latest (18 November); Vals AI cyber benchmark page (updated 19 November, no per-model dates); Apollo Research blog (19 November, already published); METR blog (5 November); NIST CAISI (16 October); FAR.AI blog (9 November); Redwood Research (17 November); Scale Labs (17 November); EU AI Office news (18 November); Frontier Model Forum updates (newest item undated). Could not read: no individual GitHub advisory page or in-window advisory was returned by searches, so advisories from 20-21 November may have been missed; no AIID record above 1834 could be found; Cisco Foundation AI blog (fetch refused); HiddenLayer pages show no dates. Searched without opening a primary page: Zenity, Noma, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Anthropic and OpenAI threat reports, Palisade, Dreadnode, Japan/Korea/Singapore AISIs, Future of Life Institute. Not checked: Transluce, Nightingale Collective, CISA, Reuters, Wired, The Record, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, SaferAI, MLCommons, Partnership on AI, OECD, state legislatures.",
+ "backfill": false,
+ "aiid_checked_to": 1834,
+ "items": []
+}
