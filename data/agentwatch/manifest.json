@@ -1,8 +1,26 @@
 {
- "updated": "2026-11-17",
- "run_at": "2026-11-17T17:49:34-08:00",
+ "updated": "2026-11-22",
+ "run_at": "2026-11-22T17:55:00-08:00",
  "items": 315,
  "runs": [
+  {
+   "date": "2026-11-22",
+   "run_at": "2026-11-22T17:55:00-08:00",
+   "window_from": "2026-11-21",
+   "window_to": "2026-11-22",
+   "title": "Quiet day",
+   "summary": "No new AI vulnerability advisory, AI incident, offensive-capability measurement or evaluator item dated 21-22 November was found. AI Incident Database records 1835 and 1836 were read and left out: one is a vehicle incident and the other describes an outage from a human-run patching process, with all its reports dated before the window.",
+   "sources_note": "Read: GitHub advisories list pages (CWE and withdrawn filters, newest 8 September; no newest-first list could be opened and searches surfaced no individual in-window advisory page) and three Corgea CVE digests (5-11 November); AI Incident Database home page and records 1835 and 1836 (newest listed 21 November); METR research (20 November), Apollo (19 November), Irregular (17 November), Epoch AI (18 November), UK AISI (26 October), NIST CAISI (16 October), Redwood (17 November), FAR.AI (9 November), Gray Swan news (12 November), EU AI Office code-of-practice page. Could not read: in-window GitHub advisory pages (none surfaced, so advisories from 21-22 November may have been missed); a current Scale AI news index. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Palisade, Dreadnode, Vals AI, Cisco Foundation AI, Transluce, Promptfoo, AIUC, Lakera, model launches and system cards. Not checked: Japan/Korea/Singapore AISIs, individual threat-intelligence and news reporters (Anthropic, OpenAI, Google, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer), SecureBio, AVERI, AI Evaluator Forum, Haize, Patronus, Goodfire, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures.",
+   "backfill": false,
+   "count": 0,
+   "by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+   }
+  },
   {
    "date": "2026-11-17",
    "run_at": "2026-11-17T17:49:34-08:00",
