@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-23",
+ "run_at": "2026-11-23T17:49:14-08:00",
+ "window_from": "2026-11-22",
+ "window_to": "2026-11-23",
+ "title": "Quiet day",
+ "summary": "No new AI vulnerability advisory, AI incident, offensive-capability measurement or evaluator item dated 22-23 November was found. AI Incident Database record 1846, on Claude Code approvals leaking secrets into public repositories, was read and left out because all its reports predate the window.",
+ "sources_note": "Read: AI Incident Database home page and record 1846 with its CSO Online report (11 November); METR research index (newest 20 November) and agent-incidents page; Apollo blog (19 November); UK AISI blog (26 October); FAR.AI news (9 November); NIST CAISI page (16 October); Epoch AI blog (18 November); Redwood blog (17 November); Irregular news (14 October) and research index (17 November); Promptfoo blog; Gray Swan Series A post; Frontier Model Forum updates; a Corgea CVE digest (6 November). Could not read: any GitHub advisory page (searches returned none, so advisories from 22-23 November may have been missed); AI Incident Database records 1837-1845 (1840 and 1845 refused fetching, the rest did not surface), so those records were not checked despite the checkpoint advancing to 1846; nist.gov/caisi. Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Palisade, Dreadnode, Scale AI, Vals AI, Cisco Foundation AI, Transluce, Haize, Lakera, Patronus, AIUC, Goodfire, SecureBio, AI Evaluator Forum, EU AI Office, state legislatures, model launches and system cards. Not checked: Japan/Korea/Singapore AISIs, individual threat-intelligence and news reporters (Anthropic, OpenAI, Google, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer), AVERI, FLI, SaferAI, MLCommons, Partnership on AI, OECD.",
+ "backfill": false,
+ "aiid_checked_to": 1846,
+ "items": []
+}
