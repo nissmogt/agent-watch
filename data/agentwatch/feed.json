@@ -1,6 +1,53 @@
 {
-"updated": "2026-11-23",
+"updated": "2026-11-24",
 "items": [
+{
+"date": "2026-11-24",
+"track": "evaluator",
+"severity": "info",
+"title": "METR flags a sharp speed-up in pretraining loss improvement",
+"summary": "METR authors analyze OpenAI's published base-model log-perplexity for 13 models and say it has been falling about seven times faster since early 2026 than in 2022-2025 (roughly 0.156 per year versus 0.022). They lay out three views on whether this should change capability forecasts, state there is no consensus, and ask all developers to publish pretraining loss on fixed held-out data.",
+"publisher": "METR",
+"vendors": [
+"OpenAI"
+],
+"products": "OpenAI base models since GPT-3.5 (pretraining log-perplexity)",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/",
+"source_name": "METR",
+"aiid": null,
+"note": "Forecasting analysis, not a safety evaluation result.",
+"id": "2026-11-24/2026-11-24-metr-flags-a-sharp-speed-up-in-pretraining-loss",
+"added": "2026-11-24"
+},
+{
+"date": "2026-11-23",
+"track": "evaluator",
+"severity": "info",
+"title": "UK AISI: choice of attack policy can make monitor evaluations misleading",
+"summary": "AISI's Red Team tested an ex-production GPT-5.4-based monitor watching a Qwen agent and found the miss rate depends heavily on how synthetic attacks are generated: about 0.2% with basic prompting versus 23% with transcript editing at top optimisation. It concludes a low miss rate under one attack policy can give false confidence and that synthetic evaluations alone cannot assure deployment monitoring.",
+"publisher": "UK AI Security Institute",
+"vendors": [
+"OpenAI",
+"Alibaba"
+],
+"products": "GPT-5.4-based agent monitor; Qwen 3.8 27B agent",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://www.aisi.gov.uk/blog/attack-policy-selection-can-make-monitor-evaluations-misleading",
+"source_name": "UK AI Security Institute",
+"aiid": null,
+"note": "Accompanied by a paper per the post.",
+"id": "2026-11-24/2026-11-23-uk-aisi-choice-of-attack-policy-can-make-monitor",
+"added": "2026-11-24"
+},
 {
 "date": "2026-11-20",
 "track": "capability",

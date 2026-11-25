@@ -1,0 +1,56 @@
+{
+ "date": "2026-11-24",
+ "run_at": "2026-11-24T18:05:00-08:00",
+ "window_from": "2026-11-23",
+ "window_to": "2026-11-24",
+ "title": "UK AISI finds attack-policy choice can make AI monitor evaluations misleading",
+ "summary": "Two evaluator items and no new vulnerability, incident or capability item. UK AISI reported that the miss rate of a GPT-5.4-based agent monitor ranged from about 0.2% to 23% depending on how synthetic attacks were generated, and METR analyzed an apparent acceleration in OpenAI's pretraining loss improvement since early 2026.",
+ "sources_note": "Read: AI Incident Database home page (newest record 1846, already checked); UK AISI blog (newest 23 November); METR blog (24 November) and research index (20 November); Apollo blog (19 November); FAR.AI blog (9 November); Epoch AI blog (18 November); NIST CAISI page (16 October); Gray Swan blog (17 August); Frontier Model Forum updates (one undated post, left out); Vals AI cyber benchmark page (updated 19 November); Corgea research and advisories indexes (24 November) and two Corgea CVE digests (4 and 6 November). Could not read: any github.com advisory page (searches returned only mirrors, so GitHub advisories from 23-24 November may have been missed); AI Incident Database record 1847 and above (cite/1847 refused fetching and no newer record surfaced; checkpoint stays at 1846); Irregular research index (refused); a Corgea post on a MONAI Label path traversal reportedly exploited by AI agents (refused, left for a later run). Searched without opening a primary page: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Pillar, Invariant, Mindgard, Lasso, Talos, Check Point, Tenable, Legit, Koi, Palisade, Dreadnode, Scale AI, Cisco Foundation AI, Japan/Korea/Singapore AISIs, Redwood, Transluce, Goodfire, SecureBio, AVERI, AI Evaluator Forum, Haize, Lakera, Promptfoo, Patronus, AIUC, EU AI Office, FLI, SaferAI, MLCommons, Partnership on AI, OECD, state legislatures, Anthropic/OpenAI/Google threat reports, model launches and system cards. Not checked individually: Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer.",
+ "backfill": false,
+ "aiid_checked_to": 1846,
+ "items": [
+  {
+   "date": "2026-11-24",
+   "track": "evaluator",
+   "severity": "info",
+   "title": "METR flags a sharp speed-up in pretraining loss improvement",
+   "summary": "METR authors analyze OpenAI's published base-model log-perplexity for 13 models and say it has been falling about seven times faster since early 2026 than in 2022-2025 (roughly 0.156 per year versus 0.022). They lay out three views on whether this should change capability forecasts, state there is no consensus, and ask all developers to publish pretraining loss on fixed held-out data.",
+   "publisher": "METR",
+   "vendors": [
+    "OpenAI"
+   ],
+   "products": "OpenAI base models since GPT-3.5 (pretraining log-perplexity)",
+   "technique": "other",
+   "cve": "",
+   "ghsa": "",
+   "cvss": null,
+   "status": "",
+   "url": "https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/",
+   "source_name": "METR",
+   "aiid": null,
+   "note": "Forecasting analysis, not a safety evaluation result."
+  },
+  {
+   "date": "2026-11-23",
+   "track": "evaluator",
+   "severity": "info",
+   "title": "UK AISI: choice of attack policy can make monitor evaluations misleading",
+   "summary": "AISI's Red Team tested an ex-production GPT-5.4-based monitor watching a Qwen agent and found the miss rate depends heavily on how synthetic attacks are generated: about 0.2% with basic prompting versus 23% with transcript editing at top optimisation. It concludes a low miss rate under one attack policy can give false confidence and that synthetic evaluations alone cannot assure deployment monitoring.",
+   "publisher": "UK AI Security Institute",
+   "vendors": [
+    "OpenAI",
+    "Alibaba"
+   ],
+   "products": "GPT-5.4-based agent monitor; Qwen 3.8 27B agent",
+   "technique": "other",
+   "cve": "",
+   "ghsa": "",
+   "cvss": null,
+   "status": "",
+   "url": "https://www.aisi.gov.uk/blog/attack-policy-selection-can-make-monitor-evaluations-misleading",
+   "source_name": "UK AI Security Institute",
+   "aiid": null,
+   "note": "Accompanied by a paper per the post."
+  }
+ ]
+}
