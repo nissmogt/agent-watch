@@ -1,6 +1,27 @@
 {
-"updated": "2026-11-24",
+"updated": "2026-11-25",
 "items": [
+{
+"date": "2026-11-24",
+"track": "evaluator",
+"severity": "info",
+"title": "NIST CAISSI opens comment on draft practices for evaluating superintelligence-driven uplift",
+"summary": "NIST's Center for Advancing Innovation and Standards for Super Intelligence (CAISSI) posted a draft, NIST SP 2400-801, on practices for evaluating uplift from superintelligent (SI) systems, with public comment open until February 22, 2027.",
+"publisher": "NIST CAISSI",
+"vendors": [],
+"products": "",
+"technique": "other",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://www.nist.gov/caissi",
+"source_name": "NIST CAISSI",
+"aiid": null,
+"note": "Taken from the news listing on the CAISSI hub page; the notice's own page could not be fetched, so the draft's contents were not read.",
+"id": "2026-11-25/2026-11-24-nist-caissi-opens-comment-on-draft-practices-for",
+"added": "2026-11-25"
+},
 {
 "date": "2026-11-24",
 "track": "evaluator",

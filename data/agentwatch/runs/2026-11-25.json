@@ -1,0 +1,32 @@
+{
+ "date": "2026-11-25",
+ "run_at": "2026-11-25T17:50:20-08:00",
+ "window_from": "2026-11-24",
+ "window_to": "2026-11-25",
+ "title": "NIST CAISSI opens comment on draft practices for evaluating superintelligence-driven uplift",
+ "summary": "One evaluator item and no new vulnerability, incident or capability item. NIST's CAISSI posted draft SP 2400-801 on evaluating uplift from superintelligent systems, open for comment until 22 February 2027.",
+ "sources_note": "Read: AI Incident Database home page (newest record 1846, already checked); METR blog index and its 24 November post (already published); UK AISI blog (newest 23 November) and two UK AISI cyber posts (older); Apollo blog (19 November); NIST CAISSI hub page (24 November listing); CSRC drafts-open-for-comment page; Irregular news post (December 2025); OpenAI GPT-6 Cyber post (5 November, outside window); Corgea CVE digest (4-8 November); GitLab advisory page for the Python MCP SDK (no per-advisory dates, none kept). Could not read: any github.com advisory page (searches returned none, so GitHub advisories from 24-25 November may have been missed); AI Incident Database record 1847 and above (no newer record surfaced; checkpoint stays at 1846); the NIST SP 2400-801 notice page itself (refused fetching; item taken from the hub listing). Searched without opening a primary page or an index: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Tenable, Check Point, Talos, Legit, Koi, Mindgard, Lasso, FAR.AI, Palisade, Dreadnode, Epoch AI, Scale AI, Vals AI, Cisco Foundation AI, Japan/Korea/Singapore AISIs, Redwood, Transluce, Goodfire, SecureBio, AVERI, AI Evaluator Forum, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, EU AI Office, FLI, SaferAI, Frontier Model Forum, MLCommons, Partnership on AI, OECD, state legislatures, Anthropic/OpenAI/Google threat reports and system cards. Not checked individually: Pillar, Invariant Labs, Nightingale Collective, CISA, Reuters, Wired, The Record, BleepingComputer.",
+ "backfill": false,
+ "aiid_checked_to": 1846,
+ "items": [
+  {
+   "date": "2026-11-24",
+   "track": "evaluator",
+   "severity": "info",
+   "title": "NIST CAISSI opens comment on draft practices for evaluating superintelligence-driven uplift",
+   "summary": "NIST's Center for Advancing Innovation and Standards for Super Intelligence (CAISSI) posted a draft, NIST SP 2400-801, on practices for evaluating uplift from superintelligent (SI) systems, with public comment open until February 22, 2027.",
+   "publisher": "NIST CAISSI",
+   "vendors": [],
+   "products": "",
+   "technique": "other",
+   "cve": "",
+   "ghsa": "",
+   "cvss": null,
+   "status": "",
+   "url": "https://www.nist.gov/caissi",
+   "source_name": "NIST CAISSI",
+   "aiid": null,
+   "note": "Taken from the news listing on the CAISSI hub page; the notice's own page could not be fetched, so the draft's contents were not read."
+  }
+ ]
+}
