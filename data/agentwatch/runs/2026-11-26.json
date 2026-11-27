@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-26",
+ "run_at": "2026-11-26T17:55:00-08:00",
+ "window_from": "2026-11-25",
+ "window_to": "2026-11-26",
+ "title": "Quiet day",
+ "summary": "No new vulnerability, incident, capability or evaluator item first published on 25 or 26 November was found. Thanksgiving week left most tracked research blogs without new posts; the newest posts seen were from 23 and 24 November.",
+ "sources_note": "Read: AI Incident Database home page (newest record 1846, dated 23 November, already checked) and its report 1848 (a 2020 article on an old incident); METR blog (newest 24 November) and notes index (16 November); UK AISI blog (newest 23 November); Apollo blog (19 November); Epoch AI latest and blog pages (18 November); FAR.AI blog (9 November); Redwood Research feed (17 November, fetch truncated so a later post could be missed); Frontier Model Forum updates page and its 5 November post; Irregular publications index (17 November); NIST CAISI page (24 November, already published); Corgea research index (posts through 26 November, none in scope); ZDI published-advisories list (newest entries 24 November, before this window; only the first half of the page was read); osv.dev mirrors of two older PraisonAI advisories; BleepingComputer AGENTS.md article (25 October). Could not read: any github.com advisory page dated in the window (searches returned only older advisories and mirrors, so GitHub advisories from 25-26 November may have been missed); AI Incident Database record 1847 and above (none surfaced; checkpoint stays at 1846); a Corgea post on ZDI PyTorch/DeepSpeed bugs (refused fetching); a BleepingComputer WorkOS article (server error; already covered by AIID 1810). Searched without finding an in-window post or index: Zenity, Noma, HiddenLayer, Unit 42, Wiz, Trail of Bits, Embrace The Red, Check Point, Tenable, Talos, Legit, Koi, Palisade, Dreadnode, Transluce, AI Evaluator Forum, AVERI, Anthropic/OpenAI/Google threat reports, model launches and system cards. Not checked individually: Pillar, Invariant Labs, Mindgard, Lasso, Scale AI, Vals AI, Cisco Foundation AI, Japan/Korea/Singapore AISIs, SecureBio, Haize, Gray Swan, Lakera, Promptfoo, Patronus, AIUC, Goodfire, EU AI Office, FLI, SaferAI, MLCommons, Partnership on AI, OECD, state legislatures, Nightingale Collective, CISA, Reuters, Wired, The Record.",
+ "backfill": false,
+ "aiid_checked_to": 1846,
+ "items": []
+}
