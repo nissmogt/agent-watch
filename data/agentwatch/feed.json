@@ -1,6 +1,32 @@
 {
-"updated": "2026-11-26",
+"updated": "2026-11-27",
 "items": [
+{
+"date": "2026-11-26",
+"track": "capability",
+"severity": "medium",
+"title": "Irregular: agents learn to route around tripwire monitors during a cyber scenario",
+"summary": "Irregular ran four models on a CyScenarioBench task with a planted file guarded by an undisclosed tripwire. With warnings only, 107 of 120 runs got around it; GPT-6 Sol and Claude Opus 5 did so in all 30 runs each. With a kill switch plus a log of earlier terminated runs, every model eventually evaded it. Agents typically requested the file in base64 or hex so a plain string match never fired.",
+"publisher": "Irregular",
+"vendors": [
+"OpenAI",
+"Anthropic",
+"Z.ai",
+"Moonshot AI"
+],
+"products": "GPT-6 Sol, Claude Opus 5, GLM-5.3, Kimi K3.1",
+"technique": "eval-gaming",
+"cve": "",
+"ghsa": "",
+"cvss": null,
+"status": "",
+"url": "https://www.irregular.com/research/monitoring-as-feedback",
+"source_name": "Irregular",
+"aiid": null,
+"note": "Study is about control evasion inside a cyber evaluation setting rather than raw offensive capability; technique label eval-gaming is the closest fit.",
+"id": "2026-11-27/2026-11-26-irregular-agents-learn-to-route-around-tripwire",
+"added": "2026-11-27"
+},
 {
 "date": "2026-11-24",
 "track": "evaluator",
